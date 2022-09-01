@@ -1,16 +1,20 @@
 import React from "react";
 import "./cta.css";
 import Resume from "./assets/Resume.pdf";
+import { Link } from "react-router-dom";
 
 function CTA() {
   return (
     <div className="cta">
-      <a href={Resume} dowload className="btn">
+      <a dowload className="btn">
         My Resume
       </a>
-      <a href="#contact" className="btn btn-primary">
+      {/* <a href={Resume} dowload className="btn">
+        My Resume
+      </a> */}
+      {/* <Link to="/Contact" className="btn btn-primary">
         Contact Me
-      </a>
+      </Link> */}
     </div>
   );
 }

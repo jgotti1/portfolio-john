@@ -1,0 +1,30 @@
+.header_socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: .4rem;
+}
+.social_head{
+ 
+  color: var(--color-light);
+ font-size: 14px;
+  position: fixed;
+  bottom: 2.9rem;
+}
+
+.header_socials::after {
+  content: "";
+  height: 1.4px;
+  width: 2rem;
+  background: var(--color-primary);
+}
+.header_socials::before {
+  content: "";
+  height: 1.4px;
+  width: 2rem;
+  background: var(--color-primary);
+}

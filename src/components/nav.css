@@ -1,0 +1,42 @@
+nav {
+  display: flex;
+  background: rgba(0, 0, 0, 0.1);
+  width: max-content;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  transform: translatex(-50%);
+  top: 1rem;
+  border-radius: 3rem;
+  backdrop-filter: blur(15px);
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 401px) {
+  nav h5 {
+    display: inline-block;
+    margin-right: 12px;
+    margin-left: 1px;
+    font-size: 1rem;
+  }
+  nav h5:hover {
+    font-size: 1.3rem;
+  }
+  nav a.active {
+    color: var(--color-white);
+  }
+}
+@media screen and (max-width: 500px) {
+  nav
+  h5 {
+    display: inline-block;
+
+    font-size: 14px;
+    max-height: fit-content;
+  }
+  nav,
+  h5:hover {
+    font-size: 1rem;
+  }
+}

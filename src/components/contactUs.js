@@ -1,9 +1,10 @@
-import "./contact.css";
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 
-const Contact = () => {
+import "./contactUs.css";
+
+const ContactUs = () => {
   const form = useRef();
   const {
     register,
@@ -16,7 +17,7 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     btn.value = "Sending...";
-    emailjs.sendForm("default_service", "template_qt9fba7", form.current, "9EmwpRImGcz6E8zyG").then(
+    emailjs.sendForm("default_service", "template_ls6a9ds", form.current, "KS4oPx77N8SoBKzio").then(
       (result) => {
         console.log(result.text);
         reset();
@@ -31,9 +32,8 @@ const Contact = () => {
   };
   return (
     <div className="contact_us">
-      <h3 className="contact_head">Contact Me</h3>
-      <h5>Fill out the form below and I will get back to you soon</h5>
-      <h4>Or if you prefer call or text 973-951-3866</h4>
+      <h3 className="contact_head">Contact Us</h3>
+      <h5>Fill out the form below and we will get back to you soon</h5>
 
       <div className="contact_container">
         <div className="contact_box">
@@ -122,4 +122,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;
