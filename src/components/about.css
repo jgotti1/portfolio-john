@@ -12,7 +12,6 @@
   grid-template-columns: 30%;
   gap: 1%;
   justify-content: center;
-  
 }
 
 .about_text_div {
@@ -25,9 +24,9 @@
   text-align: center;
   font-size: 14px;
   margin-top: 25px;
-  letter-spacing: .25px;
+  letter-spacing: 0.25px;
   padding: 10px;
-  
+
   font-family: "Montserrat", sans-serif;
 }
 .about_container h2 {
@@ -37,14 +36,12 @@
 }
 
 .about_me {
-  /* display: grid; */
   width: 90%;
-  /* aspect-ratio: 1/1; */
+
   border-radius: 2rem;
   background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
   place-items: center;
-  /* margin-top: 40px; */
-  /* max-height: 100vh; */
+
   margin-left: 26px;
   box-shadow: 0px 0px 20px rgb(252, 252, 252);
 }
@@ -60,11 +57,7 @@
   transform: rotate(10deg);
   transition: var(--transition);
 }
-@media screen and (max-width: 600px) {
-  #About {
-    /* margin-top: 15rem; */
-  }
-
+@media screen and (max-width: 850px) {
   .about_container {
     display: grid;
     grid-template-columns: 70%;
@@ -77,6 +70,7 @@
     background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
     place-items: center;
     box-shadow: 0px 0px 20px rgb(252, 252, 252);
+    margin-left: 0px;
   }
   .about_me_img {
     border-radius: 2rem;

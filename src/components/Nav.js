@@ -17,9 +17,9 @@ function Nav() {
       <Link to="About" onClick={() => setActiveNav("#About")} className={activeNav === "#About" ? "active" : ""}>
         <SiAboutdotme /> <h5>About</h5>
       </Link>
-      <a href="#Experience" onClick={() => setActiveNav("#Experience")} className={activeNav === "#Experience" ? "active" : ""}>
+      <Link to="Portfolio" onClick={() => setActiveNav("#Experience")} className={activeNav === "#Experience" ? "active" : ""}>
         <BiBook /> <h5>Portfolio</h5>
-      </a>
+      </Link>
       <Link to="Services" onClick={() => setActiveNav("#Services")} className={activeNav === "#Services" ? "active" : ""}>
         <RiServiceLine /> <h5>Services</h5>
       </Link>

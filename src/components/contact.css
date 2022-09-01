@@ -4,6 +4,7 @@
   height: 100%;
   background-position: center;
   justify-content: center;
+
 }
 .contact_us h5 {
   text-align: center;
@@ -26,7 +27,7 @@
   font-family: "Montserrat", sans-serif;
 }
 .contact_head {
-  margin-top: 65px;
+  margin-top: 80px;
   margin-bottom: 10px;
   border-bottom: none;
   letter-spacing: 5px;
