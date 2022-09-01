@@ -8,6 +8,7 @@ import poppy from "../images/poppy.png";
 import number from "../images/number.png";
 import ravm from "../images/RAVM.png";
 import selfie from "../images/selfie.png";
+import crossfit from "../images/crossfit.png";
 
 function Portfolio() {
   return (
@@ -392,7 +393,69 @@ function Portfolio() {
             </li>
           </ul>
         </article>
-        {/* End of card 5*/}
+        {/* End of card 6*/}
+        {/* card section 7  */}
+        <article className="card">
+          <div className="card_photo">
+            <a href="https://crossfittrack.margottiworld.com/" target="_blank" rel="noreferrer">
+              <img src={crossfit} alt="selfie page" />
+            </a>
+            <h2>Crossfit Workout Tracker</h2>
+            <p className="try">Click on the image above to see this site.</p>
+            <div className="code_link">
+              <a className="code_link_icon" target="_blank" rel="noreferrer" href="https://github.com/jgotti1/mern-crossfit-workouts.git">
+                <AiFillGithub />
+              </a>
+              <p className="code_click">Click Icon to left for code link </p>
+            </div>
+          </div>
+          <ul className="details_list">
+            <li>
+              <p>
+                <p>
+                  <BsFillArrowRightCircleFill className="portfolio_list-icon" />
+                </p>
+              </p>
+              <p>
+                Mobile Device Friendly: <strong>YES</strong>
+              </p>
+            </li>
+            <li>
+              <p>
+                <p>
+                  <BsFillArrowRightCircleFill className="portfolio_list-icon" />
+                </p>
+              </p>
+              <p>Language: MongoDB, Express,  React, Node, Javascript, CSS   (MERN Stack App) </p>
+            </li>
+
+            <li>
+              <p>
+                <p>
+                  <BsFillArrowRightCircleFill className="portfolio_list-icon" />
+                </p>
+              </p>
+              <p>Project Type: Personal Workout Tracker</p>
+            </li>
+            <li>
+              <p>
+                <p>
+                  <BsFillArrowRightCircleFill className="portfolio_list-icon" />
+                </p>
+              </p>
+              <p>Full stack application that could be used to store and track your Crossfit workouts. </p>
+            </li>
+            <li>
+              <p>
+                <p>
+                  <BsFillArrowRightCircleFill className="portfolio_list-icon" />
+                </p>
+              </p>
+              <p>I had the need to track my workouts so I built this cool app. Click on the link, sign up and try it out tody!</p>
+            </li>
+          </ul>
+        </article>
+        {/* End of card 7*/}
 
         {/* LAST card section */}
         <article className="last_card card">
