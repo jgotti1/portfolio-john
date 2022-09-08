@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function CTA() {
   return (
     <div className="cta">
-      <a dowload className="btn">
+      <a download className="btn">
         My Resume
       </a>
       {/* <a href={Resume} dowload className="btn">

@@ -1,18 +1,15 @@
-strong {
-  text-decoration: underline;
-}
-
 .card {
   background: #2c2c8b;
   border-radius: 2rem 2rem 2rem 2rem;
   border: 3px solid var(--color-primary);
   padding: 0.5rem;
   transition: var(--transition);
-  height: 576px;
-  width: 300px;
+  height: 625px;
+  width: 365px;
+ 
 }
 .last_card {
-  margin-bottom: 80px;
+  height: 90px;
 }
 .card:hover {
   background: transparent;
@@ -23,7 +20,7 @@ strong {
 
 .card_photo h2 {
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-shadow: 0px 0px 25px rgb(252, 248, 248);
 }
 .card_photo p {
@@ -48,9 +45,10 @@ strong {
   display: grid;
   grid-template-columns: 10% 90%;
   align-items: top;
-  margin-left: 25px;
+  margin-left: 15px;
   color: darkgray;
-  margin-bottom: 8px;
+  margin-top: 18px;
+  margin-bottom: 18px;
   gap: 5px;
   font-size: 14px;
   font-style: italic;
@@ -58,7 +56,14 @@ strong {
 .code_click {
   justify-self: left;
 }
-
+.code_click:visited,
+.code_click:active,
+.code_click:link {
+  color: rgb(189, 189, 189);
+}
+.code_click:hover {
+  color: rgb(248, 248, 248);
+}
 .code_link_icon {
   font-size: 24px;
   color: rgb(248, 248, 248);
@@ -77,9 +82,9 @@ strong {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
-  gap: 3rem;
+ gap: 3rem;
   justify-content: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-size: 12.2px;
   line-height: 1.3rem;
 }
@@ -156,6 +161,15 @@ li {
     margin-bottom: 0;
     font-size: 16px;
   }
+  .card {
+    background: #2c2c8b;
+    border-radius: 2rem 2rem 2rem 2rem;
+    border: 3px solid var(--color-primary);
+    padding: 0.5rem;
+    transition: var(--transition);
+    height: 635px;
+    width: 375px;
+  }
 }
 /* Small Device Adjust */
 @media screen and (max-width: 600px) {
@@ -179,5 +193,14 @@ li {
     text-shadow: 0px 0px 35px rgb(248, 248, 248);
     text-transform: uppercase;
     letter-spacing: 2.8px;
+  }
+  .card {
+    background: #2c2c8b;
+    border-radius: 2rem 2rem 2rem 2rem;
+    border: 3px solid var(--color-primary);
+    padding: 0.5rem;
+    transition: var(--transition);
+    height: 635px;
+    width: 375px;
   }
 }

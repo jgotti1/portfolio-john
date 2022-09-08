@@ -1,6 +1,6 @@
 import React from "react";
 import "./about.css";
-import ME from "../images/john.jpg";
+
 
 const About = () => {
   return (
@@ -9,7 +9,7 @@ const About = () => {
         <h2 className="text-light-about">About Me</h2>
         <div className="about_me">
           <div className="about_me_img">
-            <img src={ME} alt="john" />
+            <img src="../images/john.jpg" alt="john" />
           </div>
         </div>
       </div>
