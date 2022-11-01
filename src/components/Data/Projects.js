@@ -1,5 +1,19 @@
 export const Projects = [
   {
+    weblink: "https://taskmasterusa.com/",
+    image: "../images/taskmaster.png",
+    imagealt: "TaskMAsterUSA",
+    title: "TaskMAsterUSA",
+    git: "https://github.com/jgotti1/TaskMasterUSA.git",
+    mobile: "YES",
+    language: "MongoDB, Express, React, Node, Javascript, CSS (MERN Stack App)",
+    type: " JavaScript Game",
+    overview: " My final milestone project at NJIT. Was a student, team final project.",
+    description: `An App created for a business to track and assign employee tasks. 
+    Try our demo accounts out... ADMIN demo@gmail.com password: Password123!
+    Regular User Login: mike@gmail.com password: Password123!`
+  },
+  {
     weblink: "https://monkeygame.margottiworld.com/",
     image: "../images/MonkeyGame.png",
     imagealt: "MonkeyGame",
