@@ -6,7 +6,7 @@ function Services() {
   return (
     <section id="Services">
       <h5 className="offer">What I Offer</h5>
-      <h2 className="services_title">Services</h2>
+      <h2 className="services_title">Freelance Services</h2>
       <h5>Call or contact me for more details and pricing</h5>
 
       <div className="container services_container ">

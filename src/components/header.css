@@ -1,10 +1,23 @@
 header{
-  margin-top: 78px;
+  position: relative;
+  margin-bottom: 150px;
+  margin-top: 120px;  
+}
+.header_container h4{
+
+}
+.skill-section  {
+  margin-top: 20px;
 }
 
+.text, .text-1{
+   text-align: center;
+  font-size: 14px;
+  color: var(--color-light);
+}
 .header_container {
   text-align: center;
-  height: 100vh;
+  min-height: 68vh;
   position: relative;
   margin-top: 8px;
 }
@@ -12,14 +25,19 @@ header{
   letter-spacing: 10px;
   font-size: 3.5em;
   text-shadow: 0px 0px 25px rgb(252, 248, 248);
+  margin-top: -10px;
 }
 .cta {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   gap: 1.2rem;
   justify-content: center;
+  height: 30px;
+  text-align: center;
 }
-
+span {
+  margin: 0 3px;
+}
 .me {
   background: linear-gradient(var(--color-primary), transparent);
   width: auto;
@@ -28,44 +46,135 @@ header{
   transform: translateX(-50%);
   overflow: hidden;
   border-radius: 5rem 5rem 0rem 0rem;
-
   box-shadow: 0 0 65px #030303;
 }
-/* .scroll_down {
-  position: absolute;
-  right: -2.3rem;
-  bottom: 15rem;
-  transform: rotate(90deg);
-  font-weight: 300;
-  font-size: 0.8rem;
-} */
 
 @media screen and (max-width: 1024px) {
   header {
-    height: 68vh;
+    min-height: 100vh;
   }
 }
+
 @media screen and (max-width: 600px) {
+
   header {
-    height: 100vh;
+    min-height: 100vh;
   }
   .scroll_down {
     display: none;
   }
+  .text{
+  text-align: center;
+  font-size: 12px;
+
+  color: var(--color-light);
 }
-@media screen and (max-width: 600px) {
-  .text-light {
-    letter-spacing: 1.1px;
-    font-size: 1.3rem;
-    text-align: center;
-  }
+
   .name {
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
     font-size: 2.1rem;
     text-align: center;
     display: contents;
   }
-  .btn {
+
+.skill-section  {
+ margin-right: 25px;
+ margin-left: 25px;
+ 
+}
+
+  .header_container {
+ margin: 10px;
+ width: 95%;
+}
+.me {
+left: 47%;
+}
+}
+
+@media screen and (max-width: 450px) {
+  header {
+    min-height: 100vh;
+  }
+  .scroll_down {
     display: none;
   }
+
+
+  .text-1{
+  text-align: center;
+  font-size: 12px;
+
+  color: var(--color-light);
+}
+
+.skill-section  {
+ /* margin-right: 18px;
+ margin-left: 20px; */
+
+ 
+}
+
+
+}
+
+@media screen and (max-width: 400px) {
+  header {
+    min-height: 100vh;
+  }
+  .scroll_down {
+    display: none;
+  }
+  .text{
+  text-align: center;
+  font-size: 11.5px;
+
+  color: var(--color-light);
+}
+
+  .text-1{
+  text-align: center;
+  font-size: 10px;
+
+  color: var(--color-light);
+}
+
+.skill-section  {
+ margin-right: 25px;
+ margin-left: 25px;
+
+ 
+}
+
+
+}
+
+@media screen and (max-width: 376px) {
+  header {
+    min-height: 100vh;
+  }
+  .scroll_down {
+    display: none;
+  }
+  .text{
+  text-align: center;
+  font-size: 11px;
+
+  color: var(--color-light);
+}
+
+  .text-1{
+  text-align: center;
+  font-size: 10px;
+
+  color: var(--color-light);
+}
+.skill-section  {
+ margin-right: 20px;
+ margin-left: 20px;
+ padding: 5px;
+ 
+}
+
+
 }

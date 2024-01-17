@@ -12,9 +12,9 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const btn = document.getElementById("button");
-
+  
   const sendEmail = (e) => {
+    const btn = document.getElementById("button");
     btn.value = "Sending...";
     emailjs.sendForm("default_service", "template_qt9fba7", form.current, "9EmwpRImGcz6E8zyG").then(
       (result) => {

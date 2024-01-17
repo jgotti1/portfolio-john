@@ -5,6 +5,7 @@
   background-position: center;
   justify-content: center;
 
+
 }
 .contact_us h5 {
   text-align: center;
@@ -41,7 +42,8 @@
   display: grid;
   justify-items: center;
   height: 650px;
-  width: 100%;
+  width: 50%;
+  margin: 20px auto;
 }
 .contact_box {
   height: 80%;
@@ -95,4 +97,13 @@ input[type="submit"] {
 }
 #form {
   min-width: 40%;
+}
+
+@media screen and (max-width: 600px) {
+  .contact_container {
+
+  width: 100%;
+  
+ 
+}
 }
