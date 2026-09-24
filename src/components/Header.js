@@ -109,9 +109,9 @@ function Header() {
               </p>
               <p className="home-intro">
                 Behind that are 30+ years in 24/7 publishing environments,
-                including nearly 30 at Advance Local, where I supported and
-                managed production systems, automated workflows, led code
-                rollouts, and managed the team. Alongside that work, I
+                including nearly 30 at Advance Local, where I supported
+                production system workflows, automated repetitive tasks, led
+                code rollouts, and managed the team. Alongside that work, I
                 completed the NJIT full-stack boot camp, freelanced building
                 web and mobile apps (including apps published to the Apple App
                 Store), designed a new AI Software Developer curriculum at
@@ -126,6 +126,10 @@ function Header() {
                 two little &ldquo;munchkins,&rdquo; and I enjoy CrossFit,
                 traveling, and time with my grandkids.
               </p>
+            </div>
+
+            <div className="home-footer-cta">
+              <CTA />
             </div>
           </div>
 
@@ -157,10 +161,6 @@ function Header() {
               ))}
             </div>
           </section>
-        </div>
-
-        <div className="home-footer-cta">
-          <CTA />
         </div>
       </div>
     </header>

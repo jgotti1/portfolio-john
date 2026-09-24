@@ -282,14 +282,16 @@
 .home-footer-cta {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 5rem;
+  width: 100%;
+  margin-top: 0.65rem;
 }
 
 .home-footer-cta::before,
 .home-footer-cta::after {
-  width: min(24vw, 20rem);
+  flex: 1;
+  min-width: 1.5rem;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(77, 181, 255, 0.46));
   content: "";
@@ -474,7 +476,7 @@
 
 @media screen and (max-width: 420px) {
   .home-footer-cta {
-    margin-top: 4rem;
+    margin-top: 0.25rem;
   }
 
   .home-footer-cta::before,
