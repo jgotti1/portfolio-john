@@ -1,8 +1,51 @@
 import React from "react";
 import "./Portfolio.css";
-import { BsArrowUpRight, BsCodeSlash } from "react-icons/bs";
+import {
+  BsArrowUpRight,
+  BsBraces,
+  BsCheck2Circle,
+  BsCodeSlash,
+  BsDatabase,
+} from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
+import {
+  SiCss3,
+  SiAmazonaws,
+  SiBootstrap,
+  SiExpress,
+  SiGit,
+  SiHtml5,
+  SiJavascript,
+  SiLinux,
+  SiMongodb,
+  SiNodedotjs,
+  SiOpenai,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+} from "react-icons/si";
 import { Projects } from "./Data/Projects";
+
+const technologyNodes = [
+  { label: "React", icon: SiReact, slot: 1, phase: 1 },
+  { label: "JavaScript", icon: SiJavascript, slot: 2, phase: 1 },
+  { label: "HTML5", icon: SiHtml5, slot: 3, phase: 1 },
+  { label: "CSS3", icon: SiCss3, slot: 4, phase: 1 },
+  { label: "Node.js", icon: SiNodedotjs, slot: 5, phase: 1 },
+  { label: "Git", icon: SiGit, slot: 6, phase: 1 },
+  { label: "Python", icon: SiPython, slot: 1, phase: 2 },
+  { label: "React Native", icon: SiReact, slot: 2, phase: 2 },
+  { label: "Express", icon: SiExpress, slot: 3, phase: 2 },
+  { label: "REST APIs", icon: BsBraces, slot: 4, phase: 2 },
+  { label: "Bootstrap", icon: SiBootstrap, slot: 5, phase: 2 },
+  { label: "AWS", icon: SiAmazonaws, slot: 6, phase: 2 },
+  { label: "SQL / NoSQL", icon: BsDatabase, slot: 1, phase: 3 },
+  { label: "PostgreSQL", icon: SiPostgresql, slot: 2, phase: 3 },
+  { label: "MongoDB", icon: SiMongodb, slot: 3, phase: 3 },
+  { label: "Linux + Scripting", icon: SiLinux, slot: 4, phase: 3 },
+  { label: "Software Testing", icon: BsCheck2Circle, slot: 5, phase: 3 },
+  { label: "AI-Assisted Dev", icon: SiOpenai, slot: 6, phase: 3 },
+];
 
 function Portfolio() {
   const hasProjects = Projects.length > 0;
@@ -10,12 +53,38 @@ function Portfolio() {
   return (
     <section className="portfolio-page" aria-labelledby="portfolio-title">
       <header className="portfolio-hero">
-        <p className="portfolio-eyebrow">Selected work</p>
-        <h1 id="portfolio-title">Projects built with purpose.</h1>
-        <p className="portfolio-intro">
-          A growing collection of web experiences, full-stack applications, and
-          practical tools designed to solve real problems.
-        </p>
+        <div className="portfolio-hero__copy">
+          <p className="portfolio-eyebrow">Selected work</p>
+          <h1 id="portfolio-title">Projects built with purpose.</h1>
+          <p className="portfolio-intro">
+            A growing collection of web experiences, full-stack applications, and
+            practical tools designed to solve real problems.
+          </p>
+        </div>
+
+        <div className="portfolio-constellation" aria-hidden="true">
+          <svg className="portfolio-constellation__lines" viewBox="0 0 720 300" preserveAspectRatio="none">
+            <path d="M110 72 L350 150 L595 58" />
+            <path d="M110 72 L190 242 L350 150 L535 242 L595 58" />
+            <path d="M190 242 L535 242" />
+            <path d="M350 150 L675 154" />
+          </svg>
+
+          <span className="portfolio-constellation__core">
+            <small>My toolkit</small>
+            <strong>Build · Learn · Ship</strong>
+          </span>
+
+          {technologyNodes.map(({ label, icon: Icon, slot, phase }) => (
+            <span
+              className={`portfolio-constellation__node portfolio-constellation__node--slot-${slot} portfolio-constellation__node--phase-${phase}`}
+              key={label}
+            >
+              <Icon />
+              <span>{label}</span>
+            </span>
+          ))}
+        </div>
       </header>
 
       {hasProjects ? (

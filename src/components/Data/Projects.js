@@ -23,4 +23,16 @@ export const Projects = [
     overview: "A personal project built for Lectric e-bike owners who want a quick, reliable read on how much charge is left before heading out.",
     description: "Pick your bike, enter the battery's current voltage from a multimeter or the bike's display, and it converts that to a per-cell reading against a non-linear Li-ion discharge curve for a realistic estimate. The result shows as a color-coded gauge, green, amber, or red, alongside a bike illustration whose battery fills to match. Try it out.",
   },
+  {
+    weblink: "https://busgame.margotticode.com",
+    image: "../images/kidsbusgame.jpg",
+    imagealt: "School Bus Adventure",
+    title: "School Bus Adventure",
+    git: "https://github.com/jgotti1/KidsBusGame",
+    mobile: "YES",
+    language: "HTML, CSS, JavaScript, Web Audio API, Web Speech API, SVG",
+    type: "Learning Game",
+    overview: "Designed together with my 5-year-old granddaughter, who directed the gameplay and rules as we built it.",
+    description: "A learning game for ages 5-9 with separate question banks for ages 5-6 and 7-9, 315 questions each. Kids answer read-aloud questions to pick up ten friends and ride the bus to school, then move on to a Level 2 classroom round. Music and engine sounds are synthesized in the browser, with no accounts or tracking. Try it out.",
+  },
 ];

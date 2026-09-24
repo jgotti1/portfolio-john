@@ -20,14 +20,14 @@ Active feature work takes place on the `development` branch. Do not merge into
   pages or UI sections.
 - `src/components/Nav.js` derives its active state from `useLocation`. Keep its
   links absolute and route-aware rather than restoring click-only state.
-- `src/components/Portfolio.js` renders the Portfolio introduction, a polished
-  empty state when no projects exist, and responsive project cards when data is
-  available.
+- `src/components/Portfolio.js` renders the Portfolio introduction, the
+  animated skills constellation, a polished empty state when no projects
+  exist, and responsive project cards when data is available.
 - `src/components/Data/Projects.js` is the single data source for portfolio
   cards. Add or edit entries there rather than hard-coding cards in
-  `Portfolio.js`. It is intentionally empty while the next project collection
-  is being prepared.
-- `src/components/assets/Resume.pdf` is the downloadable resume.
+  `Portfolio.js`.
+- `src/components/assets/Resume.pdf` is the downloadable resume and the source
+  of truth for the technical skills shown in the Portfolio constellation.
 - `public/images/` contains images referenced by string paths such as
   `../images/john1.jpg`.
 - `public/index.html` contains the page title and document metadata.
@@ -75,6 +75,20 @@ deliberate build-tool migration.
 
 - Keep the empty state: an empty `Projects` array should look intentional and
   must not produce a blank page.
+- The hero uses a two-column layout on larger screens and stacks its copy above
+  the skills constellation at `780px` and below. Preserve that responsive
+  relationship and check the longest constellation labels for overlap before
+  adding skills.
+- The constellation's `technologyNodes` data is kept in `Portfolio.js`. It
+  cycles three groups of six resume-backed skills through six fixed visual
+  slots. Keep each group at six entries unless the SVG connections, slot
+  positions, animation timing, and responsive layout are updated together.
+- The skills constellation is decorative (`aria-hidden="true"`). Its motion
+  must honor `prefers-reduced-motion`; with motion disabled, only the first
+  skill group should remain visible so overlapping phases are not exposed.
+- When the technical-skills section of `Resume.pdf` changes, update the
+  constellation labels to match real resume content rather than adding
+  unsupported technologies.
 - Portfolio entries currently support `id`, `title`, `type`, `overview`,
   `description`, `language`, `mobile`, `image`, `imagealt`, `weblink`, and
   `git`. New fields should be optional or supplied for every entry.

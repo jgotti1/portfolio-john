@@ -7,10 +7,17 @@
 }
 
 .portfolio-page .portfolio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(32rem, 1.22fr);
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
   min-height: 0;
   margin-top: 0;
-  max-width: 760px;
   margin-bottom: 3.5rem;
+}
+
+.portfolio-hero__copy {
+  min-width: 0;
 }
 
 .portfolio-eyebrow {
@@ -46,6 +53,159 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: clamp(1rem, 2vw, 1.12rem);
   line-height: 1.75;
+}
+
+.portfolio-constellation {
+  position: relative;
+  min-height: 18rem;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 49% 50%, rgba(77, 181, 255, 0.16), transparent 12rem),
+    radial-gradient(circle at 90% 20%, rgba(77, 181, 255, 0.07), transparent 9rem);
+}
+
+.portfolio-constellation::before,
+.portfolio-constellation::after {
+  position: absolute;
+  z-index: -1;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  box-shadow:
+    5rem 2rem rgba(255, 255, 255, 0.18),
+    11rem 9rem rgba(77, 181, 255, 0.35),
+    18rem 3rem rgba(255, 255, 255, 0.24),
+    25rem 12rem rgba(77, 181, 255, 0.22),
+    33rem 5rem rgba(255, 255, 255, 0.2),
+    39rem 14rem rgba(77, 181, 255, 0.3);
+  content: "";
+  opacity: 0.8;
+}
+
+.portfolio-constellation::before {
+  top: 2rem;
+  left: 1rem;
+}
+
+.portfolio-constellation::after {
+  right: 3rem;
+  bottom: 3rem;
+  transform: rotate(180deg);
+}
+
+.portfolio-constellation__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 5px rgba(77, 181, 255, 0.32));
+}
+
+.portfolio-constellation__lines path {
+  fill: none;
+  stroke: rgba(77, 181, 255, 0.28);
+  stroke-dasharray: 5 9;
+  stroke-width: 1.25;
+  animation: portfolio-trace 14s linear infinite;
+}
+
+.portfolio-constellation__lines path:nth-child(even) {
+  animation-direction: reverse;
+}
+
+.portfolio-constellation__core,
+.portfolio-constellation__node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(77, 181, 255, 0.35);
+  box-shadow: 0 0 22px rgba(77, 181, 255, 0.17);
+}
+
+.portfolio-constellation__core {
+  top: 50%;
+  left: 49%;
+  width: 9.5rem;
+  height: 9.5rem;
+  flex-direction: column;
+  background: radial-gradient(circle at 40% 30%, rgba(77, 181, 255, 0.25), rgba(21, 21, 53, 0.92) 65%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: portfolio-core-pulse 4.5s ease-in-out infinite;
+  text-align: center;
+}
+
+.portfolio-constellation__core small {
+  margin-bottom: 0.35rem;
+  color: var(--color-primary-variant);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.portfolio-constellation__core strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.portfolio-constellation__node {
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(21, 21, 53, 0.88);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.68rem;
+  opacity: 0;
+  visibility: hidden;
+  animation: portfolio-node-cycle 18s ease-in-out infinite;
+}
+
+.portfolio-constellation__node svg {
+  color: var(--color-primary-variant);
+  font-size: 1rem;
+}
+
+.portfolio-constellation__node--slot-1 { top: 13%; left: 9%; }
+.portfolio-constellation__node--slot-2 { top: 8%; right: 10%; }
+.portfolio-constellation__node--slot-3 { bottom: 8%; left: 19%; }
+.portfolio-constellation__node--slot-4 { right: 2%; bottom: 42%; }
+.portfolio-constellation__node--slot-5 { right: 17%; bottom: 8%; }
+.portfolio-constellation__node--slot-6 { top: 42%; left: 1%; }
+
+.portfolio-constellation__node--phase-2 { animation-delay: -12s; }
+.portfolio-constellation__node--phase-3 { animation-delay: -6s; }
+
+@keyframes portfolio-trace {
+  to { stroke-dashoffset: -140; }
+}
+
+@keyframes portfolio-core-pulse {
+  50% {
+    border-color: rgba(77, 181, 255, 0.58);
+    box-shadow: 0 0 38px rgba(77, 181, 255, 0.26);
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
+@keyframes portfolio-node-cycle {
+  0%, 28%, 100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  14% { transform: translateY(-5px) scale(1); }
+
+  32%, 96% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(2px) scale(0.88);
+  }
 }
 
 .portfolio-grid {
@@ -285,6 +445,11 @@
 }
 
 @media screen and (max-width: 1150px) {
+  .portfolio-page .portfolio-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(27rem, 1fr);
+    gap: 2.5rem;
+  }
+
   .portfolio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -297,7 +462,13 @@
   }
 
   .portfolio-page .portfolio-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
+  }
+
+  .portfolio-constellation {
+    min-height: 15rem;
   }
 
   .portfolio-grid {
@@ -323,6 +494,24 @@
 
   .portfolio-intro {
     font-size: 0.94rem;
+  }
+
+  .portfolio-constellation {
+    min-height: 13rem;
+  }
+
+  .portfolio-constellation__core {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .portfolio-constellation__node {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.58rem;
+  }
+
+  .portfolio-constellation__node svg {
+    font-size: 0.85rem;
   }
 
   .portfolio-empty {
@@ -359,8 +548,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-constellation__lines path,
+  .portfolio-constellation__core,
+  .portfolio-constellation__node,
   .project-card,
   .project-card__image {
+    animation: none;
     transition: none;
+  }
+
+  .portfolio-constellation__node--phase-1 {
+    opacity: 1;
+    visibility: visible;
   }
 }
