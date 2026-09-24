@@ -67,7 +67,6 @@ const Contact = () => {
 
             <figure className="contact-portrait">
               <img src="../images/john1.jpg" alt="John Margotti" />
-              <figcaption>Senior software engineer and application leader</figcaption>
             </figure>
 
             <div className="contact-direct" aria-label="Direct contact options">

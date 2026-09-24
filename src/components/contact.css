@@ -5,7 +5,7 @@
   height: auto;
   margin-top: 0;
   overflow: hidden;
-  padding: 8.5rem 0 3rem;
+  padding: 6rem 0 2rem;
 }
 
 .contact-page__container {
@@ -39,7 +39,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
   gap: clamp(2.5rem, 6vw, 5.5rem);
-  align-items: center;
+  align-items: start;
 }
 
 .contact-intro {
@@ -50,19 +50,19 @@
 }
 
 .contact-intro__copy h1 {
-  max-width: 10ch;
-  margin-bottom: 1rem;
-  font-size: clamp(2.7rem, 4.4vw, 4.6rem);
+  max-width: 13ch;
+  margin-bottom: 0.85rem;
+  font-size: clamp(2.25rem, 3.3vw, 3.45rem);
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 0.98;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
 }
 
 .contact-intro__copy > p:last-child {
   max-width: 36rem;
   color: rgba(255, 255, 255, 0.64);
-  font-size: 0.92rem;
-  line-height: 1.75;
+  font-size: 0.82rem;
+  line-height: 1.7;
 }
 
 .contact-eyebrow {
@@ -78,7 +78,7 @@
   position: relative;
   overflow: hidden;
   width: min(100%, 25rem);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1;
   margin: 0;
   border: 1px solid rgba(77, 181, 255, 0.42);
   border-radius: 1.4rem;
@@ -89,31 +89,10 @@
 .contact-portrait img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
+  object-fit: contain;
+  object-position: center;
   filter: saturate(0.92) contrast(1.04);
   transition: transform 320ms ease, filter 320ms ease;
-}
-
-.contact-portrait::after {
-  position: absolute;
-  inset: auto 0 0;
-  height: 52%;
-  background: linear-gradient(transparent, rgba(11, 13, 43, 0.9));
-  content: "";
-  pointer-events: none;
-}
-
-.contact-portrait figcaption {
-  position: absolute;
-  z-index: 1;
-  right: 1rem;
-  bottom: 0.9rem;
-  left: 1rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
 }
 
 .contact-direct {
@@ -163,7 +142,10 @@
 }
 
 .contact-form-card {
+  position: relative;
+  align-self: start;
   min-width: 0;
+  margin-top: 8.17rem;
   padding: clamp(1.4rem, 3.2vw, 2.5rem);
   border: 1px solid rgba(77, 181, 255, 0.28);
   border-radius: 1.7rem;
@@ -174,6 +156,20 @@
 
 .contact-form-card__heading {
   margin-bottom: 1.5rem;
+}
+
+.contact-form-card__heading .contact-eyebrow {
+  position: absolute;
+  top: -2.55rem;
+  right: 0;
+  left: auto;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 1.16rem;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-align: right;
 }
 
 .contact-form-card__heading h2 {
@@ -368,7 +364,7 @@
 
 @media screen and (max-width: 600px) {
   .contact-page {
-    padding: 7.5rem 0 2rem;
+    padding: 6.25rem 0 2rem;
   }
 
   .contact-page__container {
@@ -376,7 +372,7 @@
   }
 
   .contact-intro__copy h1 {
-    font-size: clamp(2.55rem, 13vw, 3.5rem);
+    font-size: clamp(2.15rem, 10vw, 2.85rem);
   }
 
   .contact-direct,
@@ -384,13 +380,13 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .contact-portrait {
-    aspect-ratio: 4 / 3;
-  }
-
   .contact-form-card {
     padding: 1.25rem;
     border-radius: 1.3rem;
+  }
+
+  .contact-form-card__heading .contact-eyebrow {
+    font-size: 1rem;
   }
 
   .contact-submit {
