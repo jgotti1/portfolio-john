@@ -6,10 +6,16 @@
 #About {
   min-height: 100vh;
   position: relative; 
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   margin-top: 120px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid white;
+  align-items: center;
 }
+
+
 
 
 .text-light-about {
@@ -18,25 +24,28 @@
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.about_container {
-  display: grid;
-  grid-template-columns: 30%;
-  gap: 1%;
-  justify-content: center;
-}
- 
+
 
 
 .about_text_div {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Added to vertically center the content */
-  flex-direction: column;
-  margin: 30px;
+
+  border: 1px solid white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(var(--color-bg-variant), rgba(255, 255, 255, 0.51));
+   width: 70%; 
+  max-width: 600px; 
+  margin-top: 30px;
+  display: flex;          
+  flex-direction: column; 
+  align-items: center;    
+  justify-content: center; 
+
+ 
 }
 
 .about_text {
-  max-width: 600px;
   text-align: left;
   font-size: 14px;
   margin-top: 10px;
@@ -53,14 +62,15 @@
 }
 
 .about_me {
-  width: 90%;
+  max-width: 55%;
 
   border-radius: 2rem;
   background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
   place-items: center;
 
-  margin-left: 26px;
   box-shadow: 0px 0px 20px rgb(252, 252, 252);
+
+    margin: 0 auto; 
 }
 .about_me_img {
   border-radius: 2rem;
@@ -76,14 +86,12 @@
 }
 @media screen and (max-width: 850px) {
   .about_container {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 70%;
-    /* gap: 5%; */
-    justify-items: center;
+    justify-items: center; */
   }
 #About {
   min-height: 90vh;
-  /* overflow: auto; */
   position: relative; 
   margin-bottom: 400px;
   margin-top: 120px;
@@ -98,7 +106,10 @@
     place-items: center;
     box-shadow: 0px 0px 20px rgb(252, 252, 252);
     margin-left: 0px;
+     
   }
+
+
   .about_me_img {
     border-radius: 2rem;
     overflow: hidden;
