@@ -72,7 +72,7 @@ export const Projects = [
     mobile: "YES",
     language: "HTML, CSS, JavaScript",
     type: "JavaScript Game",
-    overview: "An early bootcamp assignment (Udemy JavaScript course, 2022), built as a very early developer hungry to learn more.",
+    overview: "An early JavaScript course assignment from 2022, built as a very early developer hungry to learn more.",
     description: "The game picks a random secret number from 1 to 20. Enter a guess and press Check to get a higher or lower hint, losing a point for each wrong guess. Guess right to win and set a high score, or press Again to start a new round. Try it out.",
   },
 ];
