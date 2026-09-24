@@ -104,8 +104,10 @@ deliberate build-tool migration.
   background color, e.g. light green for Tip Calc) so the whole preview shows
   scaled to fit.
 - `language` is displayed as comma-separated technology tags. Avoid putting
-  explanatory prose in that field.
-- "Feed the Monkey" (the first entry in `Projects.js`) is the copy-length
+  explanatory prose in that field. List every technology the project's card
+  provides; do not drop tags to save space (trim description copy instead).
+- "Feed the Monkey" (no longer first in `Projects.js`; RedactMe leads as the
+  featured project, and new cards go after it unless told otherwise) is the copy-length
   template: its `overview` (one sentence) and `description` (three to four
   sentences) roughly fill the card's `22rem` depth without leaving obvious
   empty space above the tech tags/buttons, and without overflowing. When
