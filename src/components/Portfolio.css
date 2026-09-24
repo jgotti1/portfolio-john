@@ -149,8 +149,13 @@
 
 .portfolio-constellation__core strong {
   color: rgba(255, 255, 255, 0.88);
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 500;
+  line-height: 1.6;
+}
+
+.portfolio-constellation__core strong span {
+  display: block;
 }
 
 .portfolio-constellation__node {
@@ -530,6 +535,11 @@
   .portfolio-constellation__core {
     width: 7.5rem;
     height: 7.5rem;
+  }
+
+  .portfolio-constellation__core strong {
+    font-size: 0.74rem;
+    line-height: 1.5;
   }
 
   .portfolio-constellation__node {

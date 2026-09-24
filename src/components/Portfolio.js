@@ -74,7 +74,11 @@ function Portfolio() {
 
           <span className="portfolio-constellation__core">
             <small>My toolkit</small>
-            <strong>Build · Automate · Ship</strong>
+            <strong>
+              <span>Build</span>
+              <span>Automate</span>
+              <span>Ship</span>
+            </strong>
           </span>
 
           {technologyNodes.map(({ label, icon: Icon, slot, phase }) => (
