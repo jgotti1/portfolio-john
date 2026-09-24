@@ -90,8 +90,19 @@ deliberate build-tool migration.
   constellation labels to match real resume content rather than adding
   unsupported technologies.
 - Portfolio entries currently support `id`, `title`, `type`, `overview`,
-  `description`, `language`, `mobile`, `image`, `imagealt`, `weblink`, and
-  `git`. New fields should be optional or supplied for every entry.
+  `description`, `language`, `mobile`, `image`, `imagealt`, `weblink`, `git`,
+  and `availability`. New fields should be optional or supplied for every
+  entry. For projects with no public web link (e.g. an App Store-only app),
+  set `weblink: null` and `availability` (e.g. "On the App
+  Store"); the card then renders a non-clickable image and a solid-blue,
+  availability badge (same look as "Live project"; add an optional
+  `availabilityUrl`, e.g. the Apple App Store listing, to make it a link,
+  otherwise it is non-interactive; never guess this URL; keep the
+  text short, about 16 characters, so it fits beside "Source code") to the left
+  of "Source code". For portrait/phone screenshots that crop badly in the wide
+  image area, set `imagefit: "contain"` and `imagebg` (a matching light
+  background color, e.g. light green for Tip Calc) so the whole preview shows
+  scaled to fit.
 - `language` is displayed as comma-separated technology tags. Avoid putting
   explanatory prose in that field.
 - "Feed the Monkey" (the first entry in `Projects.js`) is the copy-length

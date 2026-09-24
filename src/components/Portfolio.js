@@ -57,8 +57,9 @@ function Portfolio() {
           <p className="portfolio-eyebrow">Selected work</p>
           <h1 id="portfolio-title">Projects built with purpose.</h1>
           <p className="portfolio-intro">
-            A growing collection of web experiences, full-stack applications, and
-            practical tools designed to solve real problems.
+            A growing collection of web experiences, full-stack applications,
+            fun games, learning tools, and practical apps that simplify
+            workflows and solve real problems.
           </p>
         </div>
 
@@ -94,25 +95,40 @@ function Portfolio() {
               ? project.language.split(",").map((technology) => technology.trim())
               : [];
             const projectKey = project.id || project.title || project.weblink;
+            const imageLinkClass =
+              project.imagefit === "contain"
+                ? "project-card__image-link project-card__image-link--contain"
+                : "project-card__image-link";
+            const imageLinkStyle = project.imagebg ? { background: project.imagebg } : undefined;
+            const image = (
+              <img
+                className="project-card__image"
+                src={project.image}
+                alt={project.imagealt || `${project.title} project preview`}
+              />
+            );
 
             return (
               <article key={projectKey} className="project-card">
-                <a
-                  className="project-card__image-link"
-                  href={project.weblink}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`View ${project.title}`}
-                >
-                  <img
-                    className="project-card__image"
-                    src={project.image}
-                    alt={project.imagealt || `${project.title} project preview`}
-                  />
-                  <span className="project-card__image-action" aria-hidden="true">
-                    View project <BsArrowUpRight />
-                  </span>
-                </a>
+                {project.weblink ? (
+                  <a
+                    className={imageLinkClass}
+                    style={imageLinkStyle}
+                    href={project.weblink}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${project.title}`}
+                  >
+                    {image}
+                    <span className="project-card__image-action" aria-hidden="true">
+                      View project <BsArrowUpRight />
+                    </span>
+                  </a>
+                ) : (
+                  <div className={imageLinkClass} style={imageLinkStyle}>
+                    {image}
+                  </div>
+                )}
 
                 <div className="project-card__content">
                   <div className="project-card__meta">
@@ -137,10 +153,19 @@ function Portfolio() {
                   )}
 
                   <div className="project-card__actions">
-                    {project.weblink && (
+                    {project.weblink ? (
                       <a href={project.weblink} target="_blank" rel="noreferrer">
                         Live project <BsArrowUpRight aria-hidden="true" />
                       </a>
+                    ) : (
+                      project.availability &&
+                      (project.availabilityUrl ? (
+                        <a href={project.availabilityUrl} target="_blank" rel="noreferrer">
+                          {project.availability} <BsArrowUpRight aria-hidden="true" />
+                        </a>
+                      ) : (
+                        <span className="project-card__availability">{project.availability}</span>
+                      ))
                     )}
                     {project.git && (
                       <a className="project-card__source" href={project.git} target="_blank" rel="noreferrer">

@@ -361,6 +361,33 @@
   font-weight: 600;
 }
 
+.project-card__actions .project-card__availability {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  background: var(--color-primary-variant);
+  border: 1px solid var(--color-primary-variant);
+  border-radius: 0.65rem;
+  color: #10102d;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: default;
+}
+
+.project-card__image-link--contain {
+  padding: 0.6rem 0;
+}
+
+.project-card__image-link--contain .project-card__image {
+  object-fit: contain;
+}
+
+.project-card__image-link--contain::after {
+  display: none;
+}
+
 .project-card__actions a:hover,
 .project-card__actions a:focus-visible {
   background: var(--color-white);
