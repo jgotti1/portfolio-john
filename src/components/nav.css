@@ -28,15 +28,34 @@ nav {
   }
 }
 @media screen and (max-width: 500px) {
-  nav
-  h5 {
-    display: inline-block;
-
-    font-size: 14px;
-    max-height: fit-content;
+  nav {
+    width: calc(100% - 1rem);
+    max-width: 390px;
+    justify-content: space-between;
+    padding: 0.55rem 0.4rem;
   }
-  nav,
-  h5:hover {
+
+  nav a {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.1rem;
     font-size: 1rem;
+  }
+
+  nav h5 {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    font-size: 0.64rem;
+    font-weight: 500;
+    text-overflow: ellipsis;
+  }
+
+  nav a.active {
+    color: var(--color-white);
   }
 }

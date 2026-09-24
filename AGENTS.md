@@ -8,6 +8,13 @@ client-side React 18 application created with Create React App (`react-scripts`
 new framework, state library, styling system, or build tool unless the user
 explicitly asks for one.
 
+Work now happens directly on `main` (the `development` branch was merged into
+it). Do not create commits or push changes unless the user explicitly requests
+it. The site is hosted on Vercel (project `portfolio-john`, team `john-74e3`),
+connected to the GitHub repo: pushes to `main` deploy to production and serve
+`johnmargotti.com` and `margotticode.com`; other branches get preview
+deployments.
+
 ## Repository map
 
 - `src/index.js` mounts the React application.
@@ -15,12 +22,18 @@ explicitly asks for one.
   persistent social links.
 - `src/components/` contains one component and a colocated CSS file for most
   pages or UI sections.
+- `src/components/Nav.js` derives its active state from `useLocation`. Keep its
+  links absolute and route-aware rather than restoring click-only state.
+- `src/components/Portfolio.js` renders the Portfolio introduction, the
+  animated skills constellation, a polished empty state when no projects
+  exist, and responsive project cards when data is available.
 - `src/components/Data/Projects.js` is the single data source for portfolio
-  cards. Add or edit portfolio entries there rather than hard-coding cards in
+  cards. Add or edit entries there rather than hard-coding cards in
   `Portfolio.js`.
-- `src/components/assets/Resume.pdf` is the downloadable resume.
+- `src/components/assets/Resume.pdf` is the downloadable resume and the source
+  of truth for the technical skills shown in the Portfolio constellation.
 - `public/images/` contains images referenced by string paths such as
-  `../images/john1.jpg` and `../images/taskmaster.png`.
+  `../images/john1.jpg`.
 - `public/index.html` contains the page title and document metadata.
 
 `src/components/contactUs.js` is not part of the rendered application and
@@ -39,11 +52,10 @@ Run commands from the repository root.
   `CI=true npm test -- --watchAll=false`
 
 There is currently no dedicated `lint` script and no test suite. At minimum,
-run `npm run build` after code changes. The build currently succeeds without
-compiler warnings. The dependency tree still contains security advisories
-under the legacy, unmaintained `react-scripts` toolchain; do not run
-`npm audit fix --force`, because npm proposes an invalid `react-scripts@0.0.0`
-replacement. Address the remainder through a deliberate build-tool migration.
+run `npm run build` after code changes. Create React App is unmaintained, so
+dependency audits can report transitive build-tool advisories. Do not run
+`npm audit fix --force`; address incompatible dependency fixes through a
+deliberate build-tool migration.
 
 ## Implementation conventions
 
@@ -52,16 +64,95 @@ replacement. Address the remainder through a deliberate build-tool migration.
   and broad element rules belong in `src/index.css`.
 - Reuse the CSS custom properties in `:root` (colors, container widths, and
   transitions) instead of introducing near-duplicate literal values.
-- Preserve the existing responsive breakpoints unless a design change calls
-  for a coordinated update. Check desktop, tablet, and phone layouts when
-  changing sizing or positioning.
+- Preserve existing responsive behavior unless a design change calls for a
+  coordinated update. Check desktop, tablet, and phone layouts when changing
+  sizing or positioning.
 - Use semantic HTML and accessible labels/alternative text. Interactive
   elements must remain keyboard usable, and links that open a new tab must use
   `rel="noreferrer"` or an equivalent safe value.
-- Prefer stable data keys when adding an identifier to project data. Do not
-  introduce additional index-based list keys.
+- Use stable data keys. Portfolio cards prefer `project.id`, then `title` or
+  `weblink`; do not revert them to array-index keys.
 - Keep changes in plain JavaScript and CSS unless the user requests a broader
   migration.
+
+## Portfolio page
+
+- Keep the empty state: an empty `Projects` array should look intentional and
+  must not produce a blank page.
+- The hero uses a two-column layout on larger screens and stacks its copy above
+  the skills constellation at `780px` and below. Preserve that responsive
+  relationship and check the longest constellation labels for overlap before
+  adding skills.
+- The constellation's `technologyNodes` data is kept in `Portfolio.js`. It
+  cycles three groups of six resume-backed skills through six fixed visual
+  slots. Keep each group at six entries unless the SVG connections, slot
+  positions, animation timing, and responsive layout are updated together.
+- The skills constellation is decorative (`aria-hidden="true"`). Its motion
+  must honor `prefers-reduced-motion`; with motion disabled, only the first
+  skill group should remain visible so overlapping phases are not exposed.
+- When the technical-skills section of `Resume.pdf` changes, update the
+  constellation labels to match real resume content rather than adding
+  unsupported technologies.
+- Portfolio entries currently support `id`, `title`, `type`, `overview`,
+  `description`, `language`, `mobile`, `image`, `imagealt`, `weblink`, `git`,
+  and `availability`. New fields should be optional or supplied for every
+  entry. For projects with no public web link (e.g. an App Store-only app),
+  set `weblink: null` and `availability` (e.g. "On the App
+  Store"); the card then renders a non-clickable image and a solid-blue,
+  availability badge (same look as "Live project"; add an optional
+  `availabilityUrl`, e.g. the Apple App Store listing, to make it a link,
+  otherwise it is non-interactive; never guess this URL; keep the
+  text short, about 16 characters, so it fits beside "Source code") to the left
+  of "Source code". For portrait/phone screenshots that crop badly in the wide
+  image area, set `imagefit: "contain"` and `imagebg` (a matching light
+  background color, e.g. light green for Tip Calc) so the whole preview shows
+  scaled to fit.
+- `language` is displayed as comma-separated technology tags. Avoid putting
+  explanatory prose in that field. List every technology the project's card
+  provides; do not drop tags to save space (trim description copy instead).
+- "Feed the Monkey" (no longer first in `Projects.js`; RedactMe leads as the
+  featured project, and new cards go after it unless told otherwise) is the copy-length
+  template: its `overview` (one sentence) and `description` (three to four
+  sentences) roughly fill the card's `22rem` depth without leaving obvious
+  empty space above the tech tags/buttons, and without overflowing. When
+  adding or editing an entry, match that rough length — pad noticeably short
+  copy with more real detail from the project (features, tech, who it's for,
+  origin/backstory) and trim noticeably long copy — but never invent details
+  that aren't true of the project, and keep the tone professional (no filler
+  sentences just to take up space).
+- Cards use a fluid grid: 4 columns on desktop (`.portfolio-page` widened to
+  `1680px`), stepping down to 3 columns at `1440px`, 2 columns at `1150px`,
+  and 1 column at `780px` (where card height reverts to `auto`). Do not add
+  fixed card widths. Card title/overview/description font sizes and content
+  padding were intentionally trimmed to stay readable at the narrower
+  4-column width — do not bump the column count further without re-checking
+  readability and re-tuning that type scale.
+- Keep Portfolio styles scoped with `portfolio-`, `project-card`, or similarly
+  specific class names. Do not restore generic selectors such as `.card` or
+  `li` in `Portfolio.css`.
+- `.project-card` carries a glowing border (`border-color` plus a matching
+  `box-shadow`) using `--color-primary-variant`, brightening on hover. Preserve
+  this glow when touching card styles; if adjusting the palette, keep the
+  border color and glow color in sync.
+- Cards in the same row stretch to equal height, using CSS Grid's default
+  `align-items: stretch` (do not set `align-items: start`/`end` on
+  `.portfolio-grid`), `.project-card { height: 100% }`, and
+  `.project-card__content { flex: 1; min-height: 22rem }`. The `22rem` floor
+  is the original "Feed the Monkey" card's depth from when it was the only
+  card, so a lone card (or a row of similarly short cards) still renders at
+  that depth; taller content grows the whole row instead. `.project-card__actions`
+  uses `margin-top: auto` so the Live project/Source code buttons always land
+  on the same bottom edge across a row. Keep `min-height` + `flex: 1` on
+  `.project-card__content`, never a fixed `height` — `.project-card` has
+  `overflow: hidden`, so a fixed height clips any card whose content runs
+  longer than the floor and hides its buttons. Stretch-to-tallest only grows
+  shorter cards; it should never clip a taller one.
+- The Portfolio route changes the globally fixed social links into a static
+  footer through a route-presence selector. Verify that behavior if the App
+  shell or DOM order changes.
+- For Portfolio UI work, verify at least a desktop viewport near `1280x720`
+  and a narrow phone viewport near `390x844`. Check horizontal overflow, the
+  active navigation item, empty-state rendering, and browser error overlays.
 
 ## Routing and assets
 
@@ -88,11 +179,13 @@ replacement. Address the remainder through a deliberate build-tool migration.
 
 ## CSS cautions
 
-CSS is global in this project. Generic selectors such as `section`, `li`, and
-`.service` can affect multiple pages, and some selectors are duplicated across
-`Portfolio.css` and `services.css`. Before changing a broad selector, search
-for every use and verify all affected routes. Prefer component-scoped class
-names for new styles.
+CSS is global in this project. Generic selectors such as `header`, `section`,
+`li`, and `.service` can affect multiple pages, and some selectors are
+duplicated across component stylesheets. Before changing a broad selector,
+search for every use and verify all affected routes. Prefer component-scoped
+class names for new styles. The Portfolio hero deliberately overrides the
+global mobile `header` height rule; preserve that override unless the global
+rule is safely refactored.
 
 ## Change discipline
 
