@@ -63,4 +63,16 @@ export const Projects = [
     overview: "A personal project: a simple iOS tip calculator with bill splitting, built with React Native and Expo.",
     description: "Works out tips at a glance. Enter the bill amount, pick a tip percentage from a list of service ratings, and choose how many people are splitting it. The tip and total are shown separately, with an optional round-up and a one-tap reset for the next bill.",
   },
+  {
+    weblink: "https://pickanumber.margotticode.com",
+    image: "../images/pickanumber.jpg",
+    imagealt: "Guess My Number game with the Check button and score",
+    title: "Guess My Number",
+    git: "https://github.com/jgotti1/PickANumber",
+    mobile: "YES",
+    language: "HTML, CSS, JavaScript",
+    type: "JavaScript Game",
+    overview: "An early bootcamp assignment (Udemy JavaScript course, 2022), built as a very early developer hungry to learn more.",
+    description: "The game picks a random secret number from 1 to 20. Enter a guess and press Check to get a higher or lower hint, losing a point for each wrong guess. Guess right to win and set a high score, or press Again to start a new round. Try it out.",
+  },
 ];
