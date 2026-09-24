@@ -69,11 +69,12 @@ function Portfolio() {
             <path d="M110 72 L190 242 L350 150 L535 242 L595 58" />
             <path d="M190 242 L535 242" />
             <path d="M350 150 L675 154" />
+            <path d="M350 150 L80 142" />
           </svg>
 
           <span className="portfolio-constellation__core">
             <small>My toolkit</small>
-            <strong>Build · Learn · Ship</strong>
+            <strong>Build · Automate · Ship</strong>
           </span>
 
           {technologyNodes.map(({ label, icon: Icon, slot, phase }) => (
