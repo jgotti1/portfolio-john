@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# John Margotti — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio site built with React 18, showcasing projects, services, and
+a way to get in touch. Live pages: Home, About, Services, Portfolio, and
+Contact.
+
+## Tech Stack
+
+- [React 18](https://react.dev/) with functional components and hooks
+- [Create React App](https://create-react-app.dev/) (`react-scripts` 5)
+- [React Router v7](https://reactrouter.com/) for client-side routing
+- [React Hook Form](https://react-hook-form.com/) + [EmailJS](https://www.emailjs.com/) for the contact form
+- [React Icons](https://react-icons.github.io/react-icons/) for iconography
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+Run the development server:
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page reloads automatically on changes.
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` — runs the app in development mode
+- `npm run build` — builds the app for production to the `build` folder
+- `npm test` — launches the test runner in interactive watch mode
+- `npm run eject` — ejects the CRA configuration (one-way operation)
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+  App.js                  # routes, nav, and persistent social links
+  index.js                # app entry point
+  components/
+    Header.js              # home / landing section
+    HeaderSocials.js        # social links shown on the home page
+    Nav.js                  # top navigation
+    About.js                # about page
+    Services.js             # services page
+    Portfolio.js             # portfolio page (renders project cards)
+    Contact.js               # contact form (React Hook Form + EmailJS)
+    Data/Projects.js          # single source of data for portfolio cards
+    assets/Resume.pdf          # downloadable resume
+public/
+  images/                  # images referenced by the portfolio cards
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Adding a new portfolio project means adding an entry to
+`src/components/Data/Projects.js` and its screenshot to `public/images/`
+rather than hard-coding a card in `Portfolio.js`.
 
-### `npm test`
+## Contributing / Development Notes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+See [AGENTS.md](./AGENTS.md) for detailed conventions on styling, routing,
+forms, and change discipline when working on this codebase.
