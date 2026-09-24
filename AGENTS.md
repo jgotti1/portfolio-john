@@ -159,6 +159,10 @@ deliberate build-tool migration.
 - Page routes are declared in `src/App.js` and navigation destinations in
   `src/components/Nav.js`; update both when adding, removing, or renaming a
   route.
+- The About and Services tabs are intentionally hidden for now: they carry
+  `hidden: true` in the `navItems` list in `Nav.js`. Their routes and
+  components remain, so set `hidden: false` to bring a tab back; do not delete
+  those pages.
 - Existing route paths use capitalized names (`/About`, `/Contact`,
   `/Services`, and `/Portfolio`). Treat route and filename casing carefully so
   production behavior matches local development.

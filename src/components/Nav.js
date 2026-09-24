@@ -7,28 +7,33 @@ import { RiServiceLine } from "react-icons/ri";
 import { MdOutlinePermContactCalendar } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 
+// Set hidden: false to bring a tab back; its route in App.js stays active either way.
+const navItems = [
+  { path: "/", label: "Home", icon: AiOutlineHome },
+  { path: "/About", label: "About", icon: SiAboutdotme, hidden: true },
+  { path: "/Portfolio", label: "Portfolio", icon: BiBook },
+  { path: "/Services", label: "Services", icon: RiServiceLine, hidden: true },
+  { path: "/Contact", label: "Contact", icon: MdOutlinePermContactCalendar },
+];
+
 function Nav() {
   const { pathname } = useLocation();
   const isActive = (path) => pathname.toLowerCase() === path.toLowerCase();
 
   return (
     <nav aria-label="Primary navigation">
-      <Link to="/" className={isActive("/") ? "active" : ""} aria-current={isActive("/") ? "page" : undefined}>
-        <AiOutlineHome /> <h5>Home</h5>
-      </Link>
-      <Link to="/About" className={isActive("/About") ? "active" : ""} aria-current={isActive("/About") ? "page" : undefined}>
-        <SiAboutdotme /> <h5>About</h5>
-      </Link>
-      <Link to="/Portfolio" className={isActive("/Portfolio") ? "active" : ""} aria-current={isActive("/Portfolio") ? "page" : undefined}>
-        <BiBook /> <h5>Portfolio</h5>
-      </Link>
-      <Link to="/Services" className={isActive("/Services") ? "active" : ""} aria-current={isActive("/Services") ? "page" : undefined}>
-        <RiServiceLine /> <h5>Services</h5>
-      </Link>
-      <Link to="/Contact" className={isActive("/Contact") ? "active" : ""} aria-current={isActive("/Contact") ? "page" : undefined}>
-        <MdOutlinePermContactCalendar />
-        <h5>Contact</h5>
-      </Link>
+      {navItems
+        .filter(({ hidden }) => !hidden)
+        .map(({ path, label, icon: Icon }) => (
+          <Link
+            key={path}
+            to={path}
+            className={isActive(path) ? "active" : ""}
+            aria-current={isActive(path) ? "page" : undefined}
+          >
+            <Icon /> <h5>{label}</h5>
+          </Link>
+        ))}
     </nav>
   );
 }
