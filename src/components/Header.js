@@ -105,20 +105,20 @@ function Header() {
 
             <div className="home-hero__details">
               <p className="home-intro">
-                I&apos;m a senior software engineer at Dow Jones and the
-                application subject matter expert, pairing hands-on engineering
-                with the leadership to move complex work forward.
+                I&apos;m a senior software engineer and the application subject
+                matter expert for a major national media organization, pairing
+                hands-on engineering with the leadership to move complex work
+                forward.
               </p>
               <p className="home-intro">
                 Behind that are 30+ years in 24/7 publishing environments,
-                including nearly 30 at Advance Local, where I supported
-                production system workflows, automated repetitive tasks, led
-                code rollouts, and managed the team. Alongside that work, I
-                completed the NJIT full-stack boot camp, freelanced building
-                web and mobile apps (including apps published to the Apple App
-                Store), designed a new AI Software Developer curriculum at
-                ThriveDX, and taught full-stack development in university boot
-                camps nationwide.
+                where I supported production system workflows, automated
+                repetitive tasks, led code rollouts, and managed the team.
+                Alongside that work, I completed a full-stack developer boot
+                camp, freelanced building web and mobile apps (including apps
+                published to the Apple App Store), designed a new AI Software
+                Developer curriculum, and taught full-stack development in
+                university boot camps nationwide.
               </p>
               <p className="home-intro">
                 I&apos;m currently pursuing an accelerated bachelor&apos;s and

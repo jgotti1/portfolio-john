@@ -180,12 +180,18 @@ deliberate build-tool migration.
   fixed gap above the socials footer. Do not move them into a column.
 - The About and Services tabs are hidden (see Routing); the Contact tab label
   is "Let's Talk".
+- The home bio (three paragraphs under the photo) is written from the resume
+  but intentionally names no employers, schools, or companies; keep it generic
+  ("a major national media organization", "a full-stack developer boot camp")
+  and do not repeat the same phrase twice. It also omits contact details such
+  as address, phone, and email.
 - Let's Talk (`contact.css`): a glowing rule (`.socials::before`) separates the
   page from the socials footer. The bottom background glow was lifted so it
   fades before the section edge; keep it inside the section or the footer will
   show a visible color band. The form card's background box is not extended
   above the card, and the fields are spaced to fill it (larger row gaps and a
-  taller message box). Its copy says "I respond to every message the same day".
+  taller message box). Its copy says "I respond to every message within 24
+  hours".
 - When the page is at least a viewport tall, the socials footer sits below the
   first screen; screenshots need a taller window or a build with that
   minimum height removed to see it.
@@ -214,6 +220,13 @@ deliberate build-tool migration.
 - Do not change EmailJS service IDs, template IDs, or public keys without an
   explicit request. Do not add private credentials or `.env` files to source
   control.
+- The form currently uses the reconnected EmailJS Gmail service
+  (`service_15m4fp5`, template `template_mmq1uul`). If submissions start
+  failing with "Gmail_API: Invalid grant", the Gmail connection in the EmailJS
+  dashboard has expired: reconnect it under Email Services (no code change).
+  The template variables must stay `name`, `email`, `phone`, `subject`, and
+  `message`. Never put the EmailJS private key in the repository or the
+  browser bundle; only the public key belongs in `Contact.js`.
 - Avoid direct DOM manipulation in new React code. If the submit-button state
   is changed, prefer React state over `document.getElementById`.
 - A `contact-form` branch (already pushed) replaces EmailJS with a Vercel
