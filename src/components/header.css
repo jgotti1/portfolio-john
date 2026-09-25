@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 6.5rem 0 0.75rem;
+  padding: 6.5rem 0 2.5rem;
 }
 
 .home-page__container {
@@ -40,10 +40,10 @@
     "primary terminal"
     "primary hero"
     "primary skills";
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
   grid-template-rows: auto auto auto 1fr;
   align-items: start;
-  column-gap: clamp(5rem, 9.6vw, 7.7rem);
+  column-gap: clamp(6.25rem, calc(9.6vw + 1.25rem), 8.95rem);
   row-gap: 2rem;
 }
 
@@ -172,6 +172,46 @@
   transition: transform 320ms ease;
 }
 
+.home-portrait__pop {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .home-portrait {
+    --pop-scale: 1.12;
+  }
+
+  .home-portrait__frame img,
+  .home-portrait__pop img {
+    transform: scale(var(--pop-scale));
+    transform-origin: left bottom;
+  }
+
+  .home-portrait__pop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% - 3px);
+    z-index: 2;
+    display: block;
+    width: 16%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .home-portrait__pop img {
+    position: absolute;
+    bottom: 0;
+    left: calc(-625% + 3px);
+    width: 625%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center bottom;
+    transition: transform 320ms ease;
+  }
+}
+
 .home-portrait__caption {
   position: absolute;
   right: 1rem;
@@ -282,15 +322,15 @@
 .home-footer-cta {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   width: 100%;
-  margin-top: 0.65rem;
+  margin-top: 3.5rem;
 }
 
 .home-footer-cta::before,
 .home-footer-cta::after {
-  flex: 1;
+  flex: 0 1 min(24vw, 20rem);
   min-width: 1.5rem;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(77, 181, 255, 0.46));
@@ -319,8 +359,8 @@
       inset 0 0 2rem rgba(77, 181, 255, 0.12);
   }
 
-  .home-portrait:hover .home-portrait__frame img {
-    transform: scale(1.012);
+  .home-portrait:hover {
+    --pop-scale: 1.132;
   }
 
   .home-skill-card:hover {
@@ -412,7 +452,7 @@
 
 @media screen and (max-width: 680px) {
   .home-page {
-    padding: 7.5rem 0 0.75rem;
+    padding: 7.5rem 0 2.5rem;
   }
 
   .home-page__container {
@@ -476,7 +516,7 @@
 
 @media screen and (max-width: 420px) {
   .home-footer-cta {
-    margin-top: 0.25rem;
+    margin-top: 2.5rem;
   }
 
   .home-footer-cta::before,

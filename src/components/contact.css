@@ -31,14 +31,14 @@
 }
 
 .contact-page__glow--bottom {
-  bottom: -20rem;
+  bottom: 7rem;
   left: -14rem;
 }
 
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-  gap: clamp(2.5rem, 6vw, 5.5rem);
+  gap: clamp(6rem, calc(6vw + 3.5rem), 9rem);
   align-items: start;
 }
 
@@ -353,6 +353,7 @@
   .contact-form-card {
     isolation: isolate;
     width: 82%;
+    margin-top: calc(8.17rem - 45px);
     border-color: transparent;
     background: transparent;
     box-shadow: none;
@@ -363,7 +364,7 @@
   .contact-form-card::before {
     position: absolute;
     z-index: -1;
-    top: -45px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -376,7 +377,19 @@
   }
 
   .contact-form-card__heading .contact-eyebrow {
-    top: calc(-1.75rem - 45px);
+    top: -1.75rem;
+  }
+
+  .contact-form {
+    gap: 1.3rem;
+  }
+
+  .contact-form-card__heading {
+    margin-bottom: 1.8rem;
+  }
+
+  .contact-field textarea {
+    min-height: 12.9rem;
   }
 }
 
@@ -385,6 +398,21 @@
   flex-direction: column;
   gap: 0.4rem;
   padding-bottom: 1.75rem;
+}
+
+.routes:has(.contact-page) + .socials::before {
+  width: calc(min(100% - 3rem, 1180px) * 0.85);
+  height: 1px;
+  margin-bottom: 1.04rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(77, 181, 255, 0.7) 15%,
+    rgba(77, 181, 255, 0.7) 85%,
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(77, 181, 255, 0.35);
+  content: "";
 }
 
 .routes:has(.contact-page) + .socials .social_head,

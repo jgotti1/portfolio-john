@@ -95,7 +95,7 @@ const Contact = () => {
             <div className="contact-form-card__heading">
               <p className="contact-eyebrow">Start a conversation</p>
               <h2>Send a message</h2>
-              <p>All fields are required. I typically respond as soon as I can.</p>
+              <p>All fields are required. I respond to every message the same day.</p>
             </div>
 
             <form

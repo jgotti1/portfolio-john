@@ -98,6 +98,9 @@ function Header() {
                   <span>Engineering & production system workflows</span>
                 </figcaption>
               </div>
+              <div className="home-portrait__pop" aria-hidden="true">
+                <img src="../images/jcover.png" alt="" />
+              </div>
             </figure>
 
             <div className="home-hero__details">
@@ -125,10 +128,6 @@ function Header() {
                 two little &ldquo;munchkins,&rdquo; and I enjoy CrossFit,
                 traveling, and time with my grandkids.
               </p>
-            </div>
-
-            <div className="home-footer-cta">
-              <CTA />
             </div>
           </div>
 
@@ -160,6 +159,10 @@ function Header() {
               ))}
             </div>
           </section>
+        </div>
+
+        <div className="home-footer-cta">
+          <CTA />
         </div>
       </div>
     </header>
