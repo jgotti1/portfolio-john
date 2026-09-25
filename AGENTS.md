@@ -166,6 +166,9 @@ deliberate build-tool migration.
 - Existing route paths use capitalized names (`/About`, `/Contact`,
   `/Services`, and `/Portfolio`). Treat route and filename casing carefully so
   production behavior matches local development.
+- The visible navigation label for `/Contact` is intentionally the friendlier
+  “Let’s Talk.” Keep the route itself `/Contact`; changing the label does not
+  require changing the route.
 - Put publicly addressed images in `public/images/`. Verify the path and add
   meaningful `imagealt` text for every new portfolio item.
 - Import bundled files, such as the resume, from within `src` rather than
@@ -173,13 +176,22 @@ deliberate build-tool migration.
 
 ## Forms and external services
 
-- `Contact.js` uses React Hook Form and EmailJS. Preserve validation and both
-  success and failure feedback when changing submission behavior.
-- Do not change EmailJS service IDs, template IDs, or public keys without an
-  explicit request. Do not add private credentials or `.env` files to source
-  control.
-- Avoid direct DOM manipulation in new React code. If the submit-button state
-  is changed, prefer React state over `document.getElementById`.
+- `Contact.js` uses React Hook Form and posts JSON to the `/api/contact`
+  Vercel serverless function (`api/contact.js`). Preserve validation and both
+  success and failure feedback when changing submission behavior. The hidden
+  `website` honeypot field must stay empty for real visitors.
+- `api/contact.js` hard-codes the only recipient (`johnmargotti@gmail.com`),
+  emails via the Resend REST API, and sends a phone push through ntfy. It
+  needs two Vercel environment variables: `RESEND_API_KEY` and `NTFY_TOPIC`
+  (a private topic name; subscribe to it in the ntfy app). Never commit these
+  values or add `.env` files to source control, and never accept a recipient
+  from the client.
+- The function returns success if at least one of the email or push alerts is
+  delivered. `npm start` does not serve `/api`; test the form with
+  `vercel dev` or a deployed preview.
+- EmailJS was removed from the form; the `@emailjs/browser`, `emailjs`, and
+  `emailjs-com` packages are now unused.
+- Avoid direct DOM manipulation in new React code.
 
 ## CSS cautions
 

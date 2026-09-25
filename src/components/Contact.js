@@ -1,6 +1,5 @@
 import "./contact.css";
 import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import {
   BsArrowRight,
@@ -20,23 +19,25 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const sendEmail = async () => {
+  const sendEmail = async (values) => {
     setSubmission({ state: "sending", message: "Sending your message..." });
 
     try {
-      await emailjs.sendForm(
-        "default_service",
-        "template_qt9fba7",
-        form.current,
-        "9EmwpRImGcz6E8zyG"
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) throw new Error(`Contact request failed (${response.status})`);
+
       reset();
       setSubmission({
         state: "success",
         message: "Thanks for reaching out. I’ll get back to you soon.",
       });
     } catch (error) {
-      console.error("EmailJS submission failed", error);
+      console.error("Contact submission failed", error);
       setSubmission({
         state: "error",
         message: "Your message could not be sent. Please email or call me directly.",
@@ -104,6 +105,15 @@ const Contact = () => {
               onSubmit={handleSubmit(sendEmail)}
               noValidate
             >
+              <input
+                className="contact-honeypot"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                {...register("website")}
+              />
+
               <div className="contact-form__grid">
                 <div className="contact-field">
                   <label htmlFor="name">Name</label>
