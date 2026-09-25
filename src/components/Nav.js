@@ -13,7 +13,7 @@ const navItems = [
   { path: "/About", label: "About", icon: SiAboutdotme, hidden: true },
   { path: "/Portfolio", label: "Portfolio", icon: BiBook },
   { path: "/Services", label: "Services", icon: RiServiceLine, hidden: true },
-  { path: "/Contact", label: "Contact", icon: MdOutlinePermContactCalendar },
+  { path: "/Contact", label: "Let’s Talk", icon: MdOutlinePermContactCalendar },
 ];
 
 function Nav() {

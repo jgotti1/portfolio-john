@@ -5,7 +5,7 @@
   height: auto;
   margin-top: 0;
   overflow: hidden;
-  padding: 6rem 0 2rem;
+  padding: 6rem 0 3.25rem;
 }
 
 .contact-page__container {
@@ -49,6 +49,12 @@
   gap: 1.65rem;
 }
 
+.contact-intro__copy {
+  width: min(100%, 25rem);
+  margin: 0 auto;
+  text-align: left;
+}
+
 .contact-intro__copy h1 {
   max-width: 13ch;
   margin-bottom: 0.85rem;
@@ -79,7 +85,7 @@
   overflow: hidden;
   width: min(100%, 25rem);
   aspect-ratio: 1;
-  margin: 0;
+  margin: 0 auto;
   border: 1px solid rgba(77, 181, 255, 0.42);
   border-radius: 1.4rem;
   background: var(--color-bg-variant);
@@ -160,16 +166,19 @@
 
 .contact-form-card__heading .contact-eyebrow {
   position: absolute;
-  top: -2.55rem;
-  right: 0;
-  left: auto;
+  top: -1.75rem;
+  right: auto;
+  left: 50%;
+  width: max-content;
+  max-width: calc(100% - 2rem);
   margin: 0;
   padding: 0;
   background: transparent;
-  font-size: 1.16rem;
+  font-size: 1.04rem;
   letter-spacing: 0.12em;
   line-height: 1.2;
-  text-align: right;
+  text-align: center;
+  transform: translateX(-50%);
 }
 
 .contact-form-card__heading h2 {
@@ -329,6 +338,48 @@
   }
 }
 
+@media screen and (min-width: 901px) {
+  .contact-layout {
+    align-items: end;
+    transform: translateX(6.5%);
+  }
+
+  .contact-intro {
+    gap: 0.95rem;
+    transform: translateX(-2.5rem) scale(1.12);
+    transform-origin: bottom left;
+  }
+
+  .contact-form-card {
+    isolation: isolate;
+    width: 82%;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    justify-self: start;
+  }
+
+  .contact-form-card::before {
+    position: absolute;
+    z-index: -1;
+    top: -45px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid rgba(77, 181, 255, 0.28);
+    border-radius: 1.7rem;
+    background: linear-gradient(145deg, rgba(44, 44, 108, 0.72), rgba(24, 24, 55, 0.8));
+    box-shadow: 0 1.75rem 5rem rgba(5, 7, 34, 0.3), 0 0 3rem rgba(77, 181, 255, 0.08);
+    backdrop-filter: blur(16px);
+    content: "";
+  }
+
+  .contact-form-card__heading .contact-eyebrow {
+    top: calc(-1.75rem - 45px);
+  }
+}
+
 .routes:has(.contact-page) + .socials {
   align-items: center;
   flex-direction: column;
@@ -364,7 +415,7 @@
 
 @media screen and (max-width: 600px) {
   .contact-page {
-    padding: 6.25rem 0 2rem;
+    padding: 6.25rem 0 3.25rem;
   }
 
   .contact-page__container {
@@ -386,7 +437,7 @@
   }
 
   .contact-form-card__heading .contact-eyebrow {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .contact-submit {
