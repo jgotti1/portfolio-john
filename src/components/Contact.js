@@ -25,10 +25,10 @@ const Contact = () => {
 
     try {
       await emailjs.sendForm(
-        "default_service",
-        "template_qt9fba7",
+        "service_15m4fp5",
+        "template_mmq1uul",
         form.current,
-        "9EmwpRImGcz6E8zyG"
+        "IRktYfYGtzWxJwJK9"
       );
       reset();
       setSubmission({
