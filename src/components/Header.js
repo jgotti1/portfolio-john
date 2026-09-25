@@ -102,10 +102,9 @@ function Header() {
 
             <div className="home-hero__details">
               <p className="home-intro">
-                I&apos;m a senior software engineer at Dow Jones, serving as the
-                application subject matter expert and lead engineer. I pair
-                hands-on engineering with the leadership to move complex work
-                forward.
+                I&apos;m a senior software engineer at Dow Jones and the
+                application subject matter expert, pairing hands-on engineering
+                with the leadership to move complex work forward.
               </p>
               <p className="home-intro">
                 Behind that are 30+ years in 24/7 publishing environments,
