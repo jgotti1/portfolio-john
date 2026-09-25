@@ -27,6 +27,10 @@ deployments.
 - `src/components/Portfolio.js` renders the Portfolio introduction, the
   animated skills constellation, a polished empty state when no projects
   exist, and responsive project cards when data is available.
+- `src/components/Header.js` is the Home page (styles in `header.css`); it
+  includes `HeroTerminal.js` (typing-terminal card, styles in
+  `heroTerminal.css`) and the `CTA.js` buttons. `Contact.js` is the Let's Talk
+  page (styles in `contact.css`).
 - `src/components/Data/Projects.js` is the single data source for portfolio
   cards. Add or edit entries there rather than hard-coding cards in
   `Portfolio.js`.
@@ -154,6 +158,38 @@ deliberate build-tool migration.
   and a narrow phone viewport near `390x844`. Check horizontal overflow, the
   active navigation item, empty-state rendering, and browser error overlays.
 
+## Home and Let's Talk pages
+
+- Home layout (desktop, above 1220px): a two-column grid. The name block
+  ("Hello, I'm John Margotti") sits left above the photo; the terminal card,
+  the three focus pills, and the skills cards stack on the right, with the
+  terminal's top edge aligned to the photo's top edge. At 1220px and below it
+  becomes one column: name, photo and intro, pills, terminal, skills. Keep the
+  pills wrapping (`flex-wrap: wrap`) so they never overflow narrow columns.
+- The home column gap was widened by 20px and the column ratio nudged to
+  `1.06fr / 0.94fr` so the pills still fit on one row; re-check that if either
+  changes.
+- The photo "hand pop-out" uses two copies of `jcover.png`: the framed image
+  (clipped by the frame) and `.home-portrait__pop`, a duplicate that only
+  shows in a strip just outside the frame's right edge. Both must keep the same
+  `--pop-scale`, `transform-origin`, and object-fit so the seam is invisible.
+  The source photo is cropped at its right edge, so the hand ends in a straight
+  cut; an uncropped photo would look better.
+- The "View my work" / "Download resume" buttons and glowing rule are a
+  full-width centered row (`.home-footer-cta`) below all content, with a small
+  fixed gap above the socials footer. Do not move them into a column.
+- The About and Services tabs are hidden (see Routing); the Contact tab label
+  is "Let's Talk".
+- Let's Talk (`contact.css`): a glowing rule (`.socials::before`) separates the
+  page from the socials footer. The bottom background glow was lifted so it
+  fades before the section edge; keep it inside the section or the footer will
+  show a visible color band. The form card's background box is not extended
+  above the card, and the fields are spaced to fill it (larger row gaps and a
+  taller message box). Its copy says "I respond to every message the same day".
+- When the page is at least a viewport tall, the socials footer sits below the
+  first screen; screenshots need a taller window or a build with that
+  minimum height removed to see it.
+
 ## Routing and assets
 
 - Page routes are declared in `src/App.js` and navigation destinations in
@@ -180,6 +216,13 @@ deliberate build-tool migration.
   control.
 - Avoid direct DOM manipulation in new React code. If the submit-button state
   is changed, prefer React state over `document.getElementById`.
+- A `contact-form` branch (already pushed) replaces EmailJS with a Vercel
+  serverless function (`api/contact.js`) that emails
+  `johnmargotti@gmail.com` through Resend and sends an ntfy phone alert. It
+  must not be merged into `main` until `RESEND_API_KEY` is set in Vercel
+  (`NTFY_TOPIC` is already set); otherwise the form would report success
+  without delivering. That branch also carries a rewritten forms section for
+  this file.
 
 ## CSS cautions
 
