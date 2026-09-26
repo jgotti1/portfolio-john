@@ -12,6 +12,18 @@ export const Projects = [
     description: "Sign in with Google or email, upload a PDF, and RedactMe flags sensitive details for you to review, with manual redaction too. Redactions are applied and verified before a single-use download, processed in memory with no third-party AI. Try it out.",
   },
   {
+    weblink: "https://poppy.margotticode.com",
+    image: "../images/react-memory-game.jpg",
+    imagealt: "Poppy's Match Game board with the New Game button, Total Tries counter, and flipped cards",
+    title: "Poppy's Match Game",
+    git: "https://github.com/jgotti1/React-Memory-Game",
+    mobile: "YES",
+    language: "React 18, JavaScript, CSS3 (grid and 3D transforms), Create React App, HTML5 Audio",
+    type: "React Game",
+    overview: "Built around 2023 at the request of my grandkids.",
+    description: "A classic memory game with 3D card-flip animations and a looping soundtrack. Click New Game to shuffle 12 face-down cards (6 image pairs), then flip two at a time to find every match. Matches stay face up, mismatches flip back after a couple of seconds, and a Total Tries counter tracks how many pairs you've turned over. Try it out.",
+  },
+  {
     weblink: "https://monkeygame.margotticode.com",
     image: "../images/catchthemonkey.jpg",
     imagealt: "Feed the Monkey",
