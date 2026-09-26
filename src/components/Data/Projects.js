@@ -13,8 +13,8 @@ export const Projects = [
   },
   {
     weblink: "https://taskmaster.margotticode.com",
-    image: "../images/new-taskmasterusa.jpg",
-    imagealt: "TaskMaster landing page with the Sign up Now button",
+    image: "../images/taskmaster-preview.jpg",
+    imagealt: "TaskMaster landing page with the Assign it. Track it. Get it done. headline",
     title: "TaskMaster",
     git: "https://github.com/jgotti1/New-TaskMasterUSA",
     mobile: "YES",
