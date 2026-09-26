@@ -1,29 +1,32 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
 import About from "./components/About";
-import Contact from "./components/Contact";
 import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
+import SinglePage from "./components/SinglePage";
 import Nav from "./components/Nav";
-import HeaderSocials from "./components/HeaderSocials";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Nav />
-      <div className="routes">
+      <main id="main">
         <Routes>
-          <Route exact path="/" element={<Header />} />
+          {/* Home, Portfolio, and Contact are sections of one page; the
+              shared parent keeps it mounted while the path picks a section. */}
+          <Route element={<SinglePage />}>
+            <Route path="/" />
+            <Route path="/Portfolio" />
+            <Route path="/Contact" />
+          </Route>
           <Route exact path="/About" element={<About />} />
-          <Route exact path="/Contact" element={<Contact />} />
           <Route exact path="/Services" element={<Services />} />
-          <Route exact path="/Portfolio" element={<Portfolio />} />
         </Routes>
-      </div>
-      <div className="socials">
-        <HeaderSocials />
-      </div>
+      </main>
+      <Footer />
     </Router>
   );
 }

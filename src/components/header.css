@@ -1,539 +1,286 @@
-.home-page {
-  position: relative;
-  isolation: isolate;
+/* Hero (Home section). */
+
+.hero {
   overflow: hidden;
-  padding: 6.5rem 0 2.5rem;
+  padding-top: calc(var(--nav-height) + clamp(2rem, 5vw, 3.5rem));
+  scroll-margin-top: 0;
 }
 
-.home-page__container {
-  width: min(100% - 3rem, 1280px);
-  margin: 0 auto;
-}
-
-.home-page__glow {
+.hero__glow {
   position: absolute;
+  top: 10%;
+  right: -12rem;
   z-index: -1;
-  width: 30rem;
-  height: 30rem;
+  width: 42rem;
+  height: 42rem;
   border-radius: 50%;
+  background: radial-gradient(circle, rgba(77, 181, 255, 0.2), transparent 65%);
   pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.22;
 }
 
-.home-page__glow--left {
-  top: 8rem;
-  left: -18rem;
-  background: var(--color-primary-variant);
-}
-
-.home-page__glow--right {
-  top: 20rem;
-  right: -17rem;
-  background: #7777ff;
-}
-
-.home-layout {
+.hero__grid {
   display: grid;
-  grid-template-areas:
-    "identity ."
-    "primary terminal"
-    "primary hero"
-    "primary skills";
-  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
-  grid-template-rows: auto auto auto 1fr;
-  align-items: start;
-  column-gap: clamp(6.25rem, calc(9.6vw + 1.25rem), 8.95rem);
-  row-gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
 }
 
-.home-primary {
-  display: flex;
-  grid-area: primary;
-  min-width: 0;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 0;
-}
-
-.home-hero {
-  align-self: start;
-  grid-area: hero;
-  min-width: 0;
-  height: auto;
-  margin: 0;
-}
-
-.home-hero__copy {
-  max-width: none;
-  text-align: left;
-}
-
-.home-identity {
-  align-self: end;
-  grid-area: identity;
-  width: auto;
-  max-width: 100%;
-  margin: 0 0 -0.75rem;
-  text-align: left;
-}
-
-.home-identity .home-eyebrow {
-  margin-bottom: 0.55rem;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-}
-
-.home-eyebrow {
-  margin-bottom: 0.7rem;
-  color: var(--color-primary-variant);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.home-identity h1 {
-  margin-bottom: 0;
-  font-size: clamp(3.15rem, 4.4vw, 4.1rem);
-  font-weight: 600;
-  letter-spacing: -0.065em;
-  line-height: 0.94;
-  text-wrap: balance;
-}
-
-.home-focus {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: flex-start;
-  margin-bottom: 0;
-}
-
-.home-focus li {
+.hero__hello {
   display: inline-flex;
   align-items: center;
-  min-height: 2rem;
-  padding: 0.3rem 0.4rem;
-  border: 1px solid rgba(77, 181, 255, 0.28);
+  gap: 0.65rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.75rem;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(77, 181, 255, 0.08);
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  background: rgba(77, 181, 255, 0.06);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.hero__status {
+  position: relative;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hero__status::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: hero-pulse 2.4s ease-out infinite;
+}
+
+@keyframes hero-pulse {
+  from {
+    opacity: 0.9;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+.hero h1 {
+  margin-top: 1.4rem;
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.hero__nowrap {
   white-space: nowrap;
 }
 
-.home-hero__details {
-  padding: 0 0.25rem;
-}
-
-.home-intro {
-  max-width: 100%;
-  color: rgba(255, 255, 255, 0.67);
-  font-size: 0.84rem;
+.hero__lede {
+  max-width: 34rem;
+  margin-top: 1.4rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.18rem);
   line-height: 1.7;
+  color: var(--text-2);
 }
 
-.home-intro + .home-intro {
-  margin-top: 0.85rem;
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.1rem;
 }
 
-.home-portrait {
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  justify-content: start;
+  gap: 1.25rem clamp(1rem, 3vw, 3rem);
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* dt comes first for screen readers but shows under the number; flex-end
+   (the top, in column-reverse) keeps the numbers aligned across stats. */
+.hero__stats div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.hero__stats dd {
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  white-space: nowrap;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.hero__stats dt {
+  max-width: 17ch;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
+/* ---------- Portrait + floating terminal ---------- */
+
+.hero__visual {
   position: relative;
   width: 100%;
-  margin: 0;
-  transition: transform 260ms ease;
+  max-width: 600px;
+  align-self: start;
+  justify-self: end;
+  padding-top: 5rem;
+  /* Placement nudge for the whole photo + terminal group (desktop only). */
+  top: -8px;
+  left: 15px;
 }
 
-.home-portrait__frame {
+/* The portrait leaves room on the right so the scaled-up hand can break out. Both photo copies share --pop-scale and a bottom-left origin so
+   they line up exactly. */
+.hero__portrait {
+  --pop-scale: 1.13;
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1.04;
-  border: 1px solid rgba(77, 181, 255, 0.52);
-  border-radius: 2rem;
-  background:
-    radial-gradient(circle at 70% 18%, rgba(77, 181, 255, 0.34), transparent 34%),
-    linear-gradient(145deg, #384b9d, #222257 78%);
-  box-shadow:
-    0 1.75rem 4.5rem rgba(4, 6, 28, 0.34),
-    0 0 3.5rem rgba(77, 181, 255, 0.24),
-    inset 0 0 2rem rgba(77, 181, 255, 0.08);
-  transition: border-color 260ms ease, box-shadow 260ms ease;
+  width: 98%;
+  /* Grows left into the column gap so the terminal's position (anchored to
+     .hero__visual) doesn't move. */
+  margin-left: -8%;
+  aspect-ratio: 1;
+  /* Fine placement nudge; moves the photo without moving the terminal. */
+  top: -8px;
+  left: 15px;
 }
 
-.home-portrait__frame img {
+.hero__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 70% 25%, rgba(77, 181, 255, 0.35), transparent 55%),
+    linear-gradient(160deg, #3a3a8c 0%, var(--bg-accent) 45%, #1d1d44 100%);
+  box-shadow: var(--shadow), 0 0 3rem rgba(77, 181, 255, 0.15);
+}
+
+.hero__frame img,
+.hero__pop img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center bottom;
-  transition: transform 320ms ease;
+  object-position: bottom center;
+  transform: scale(var(--pop-scale));
+  transform-origin: left bottom;
+  transition: transform 400ms var(--ease);
 }
 
-.home-portrait__pop {
-  display: none;
-}
-
-@media screen and (min-width: 800px) {
-  .home-portrait {
-    --pop-scale: 1.12;
-  }
-
-  .home-portrait__frame img,
-  .home-portrait__pop img {
-    transform: scale(var(--pop-scale));
-    transform-origin: left bottom;
-  }
-
-  .home-portrait__pop {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(100% - 3px);
-    z-index: 2;
-    display: block;
-    width: 16%;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .home-portrait__pop img {
-    position: absolute;
-    bottom: 0;
-    left: calc(-625% + 3px);
-    width: 625%;
-    height: 100%;
-    max-width: none;
-    object-fit: contain;
-    object-position: center bottom;
-    transition: transform 320ms ease;
-  }
-}
-
-.home-portrait__caption {
+/* Shows the unclipped copy only outside the frame: a strip above it and a
+   strip to its right (an L-shape), so nothing is drawn twice inside. The 1px
+   inset covers the frame's border, which the clipped copy can't paint over. */
+.hero__pop {
   position: absolute;
-  right: 1rem;
-  top: 1rem;
-  display: flex;
-  flex-direction: column;
-  max-width: 12rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 0.9rem;
-  background: rgba(18, 18, 54, 0.78);
-  box-shadow: 0 0.8rem 2rem rgba(6, 8, 35, 0.28);
-  backdrop-filter: blur(14px);
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: polygon(-5% -30%, 140% -30%, 140% 100%, calc(100% - 1px) 100%,
+    calc(100% - 1px) 1px, -5% 1px);
 }
 
-.home-portrait__caption strong {
-  color: var(--color-white);
-  font-size: 1.05rem;
-  font-weight: 600;
+.hero__portrait:hover {
+  --pop-scale: 1.15;
 }
 
-.home-portrait__caption span {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 0.69rem;
-  line-height: 1.45;
+.hero__terminal {
+  position: absolute;
+  top: 0;
+  /* Hangs past the frame into the page margin; the steps below keep it
+     inside the window as that margin shrinks. */
+  right: -5rem;
+  /* Fine placement nudge (desktop only). */
+  translate: -7px -3px;
+  z-index: 2;
+  width: min(19rem, 70%);
 }
 
-.home-skills {
-  align-self: start;
-  grid-area: skills;
-  min-width: 0;
-  height: auto;
-  margin: 0;
+.hero__terminal .home-terminal {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
-.home-skills__heading {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
+/* ---------- Responsive ---------- */
 
-.home-skills__heading h2 {
-  font-size: clamp(1.8rem, 3vw, 2.55rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
-}
-
-.home-skills__heading > p {
-  max-width: 36rem;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-.home-skills__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
-  align-items: stretch;
-}
-
-.home-skill-card {
-  padding: 1rem;
-  border: 1px solid rgba(77, 181, 255, 0.2);
-  border-radius: 1.2rem;
-  background: linear-gradient(145deg, rgba(44, 44, 108, 0.58), rgba(31, 31, 56, 0.54));
-  box-shadow: 0 1rem 3rem rgba(6, 7, 32, 0.14);
-  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
-}
-
-.home-skill-card__title {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 0.6rem;
-}
-
-.home-skill-card__title svg {
-  color: var(--color-primary-variant);
-  font-size: 1.05rem;
-}
-
-.home-skill-card h3 {
-  font-size: 0.94rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.home-skill-card ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.32rem;
-}
-
-.home-skill-card li {
-  padding: 0.24rem 0.45rem;
-  border-radius: 0.45rem;
-  background: rgba(255, 255, 255, 0.055);
-  color: rgba(255, 255, 255, 0.67);
-  font-size: 0.68rem;
-  line-height: 1.35;
-}
-
-.home-footer-cta {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  justify-content: center;
-  width: 100%;
-  margin-top: 3.5rem;
-}
-
-.home-footer-cta::before,
-.home-footer-cta::after {
-  flex: 0 1 min(24vw, 20rem);
-  min-width: 1.5rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(77, 181, 255, 0.46));
-  content: "";
-}
-
-.home-footer-cta::after {
-  background: linear-gradient(90deg, rgba(77, 181, 255, 0.46), transparent);
-}
-
-.home-footer-cta .home-cta {
-  justify-content: center;
-  margin-top: 0;
-}
-
-@media (hover: hover) {
-  .home-portrait:hover {
-    transform: translateY(-0.3rem);
-  }
-
-  .home-portrait:hover .home-portrait__frame {
-    border-color: rgba(77, 181, 255, 0.78);
-    box-shadow:
-      0 2rem 5rem rgba(4, 6, 28, 0.44),
-      0 0 4.25rem rgba(77, 181, 255, 0.36),
-      inset 0 0 2rem rgba(77, 181, 255, 0.12);
-  }
-
-  .home-portrait:hover {
-    --pop-scale: 1.132;
-  }
-
-  .home-skill-card:hover {
-    border-color: rgba(77, 181, 255, 0.62);
-    background: linear-gradient(145deg, rgba(50, 50, 126, 0.72), rgba(31, 31, 66, 0.68));
-    box-shadow: 0 1.15rem 2.75rem rgba(5, 7, 34, 0.28), 0 0 1.4rem rgba(77, 181, 255, 0.09);
-    transform: translateY(-0.3rem);
+/* Step the terminal in as the page margin shrinks (the group's 15px nudge
+   right is included) so it never runs past the window edge. */
+@media (max-width: 1413px) {
+  .hero__terminal {
+    right: -2.5rem;
   }
 }
 
-.routes:has(.home-page) + .socials {
-  align-items: center;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding-bottom: 1.75rem;
+@media (max-width: 1333px) {
+  .hero__terminal {
+    right: -1.25rem;
+  }
 }
 
-.routes:has(.home-page) + .socials .social_head,
-.routes:has(.home-page) + .socials .header_socials {
-  position: static;
+@media (max-width: 1293px) {
+  .hero__terminal {
+    right: 0;
+  }
 }
 
-@media screen and (max-width: 1220px) {
-  .home-page {
-    padding-top: 7.5rem;
+@media (max-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
   }
 
-  .home-layout {
-    grid-template-areas:
-      "identity"
-      "primary"
-      "hero"
-      "terminal"
-      "skills";
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: none;
-    gap: 3.5rem;
-  }
-
-  .home-identity {
+  /* Narrower screens: the terminal sits above the frame, overlapping only
+     its top edge, so it doesn't cover the faces. */
+  .hero__visual {
     justify-self: center;
-    width: min(100%, 38.5rem);
-    margin-bottom: -2rem;
+    max-width: 460px;
+    padding-top: 8rem;
+    top: 0;
+    left: 0;
   }
 
-  .home-hero__details {
-    align-self: center;
-    width: min(100%, 38.5rem);
+  .hero__portrait {
+    width: 90%;
+    margin-left: 0;
+    top: 0;
+    left: 0;
   }
 
-  .home-terminal {
-    justify-self: center;
-    width: min(100%, 38.5rem);
-  }
-
-  .home-primary {
-    margin-top: 0;
-  }
-
-  .home-skills {
-    margin-top: 0;
-  }
-
-  .home-hero__copy {
-    max-width: 38.5rem;
-    margin: 0 auto;
-  }
-
-  .home-focus {
-    flex-wrap: wrap;
-  }
-
-  .home-portrait {
-    width: min(100%, 38.5rem);
-    align-self: center;
-  }
-
-  .home-portrait__frame {
-    aspect-ratio: 1 / 1;
-  }
-
-  .home-skills__heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.8fr);
-    align-items: end;
-    gap: 1.5rem;
+  .hero__terminal {
+    right: -1.25rem;
+    translate: none;
   }
 }
 
-@media screen and (max-width: 680px) {
-  .home-page {
-    padding: 7.5rem 0 2.5rem;
+@media (max-width: 560px) {
+  .hero__actions .btn {
+    flex: 1 1 100%;
   }
 
-  .home-page__container {
-    width: min(100% - 2rem, 38rem);
-  }
-
-  .home-layout {
-    gap: 3rem;
-  }
-
-  .home-identity {
-    margin-bottom: -1.5rem;
-  }
-
-  .home-primary {
-    gap: 1.75rem;
-  }
-
-  .home-identity h1 {
-    font-size: clamp(2.9rem, 14vw, 4rem);
-    line-height: 0.98;
-  }
-
-  .home-focus {
-    gap: 0.45rem;
-  }
-
-  .home-focus li {
-    font-size: 0.64rem;
-    padding-right: 0.35rem;
-    padding-left: 0.35rem;
-  }
-
-  .home-intro {
-    font-size: 0.78rem;
-    line-height: 1.7;
-  }
-
-  .home-portrait__frame {
-    border-radius: 1.4rem;
-  }
-
-  .home-portrait__caption {
-    right: 0.7rem;
-    top: 0.7rem;
-  }
-
-  .home-skills__heading,
-  .home-skills__grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .home-skills__heading {
+  .hero__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
   }
 
-  .home-skill-card {
-    padding: 1rem;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .home-footer-cta {
-    margin-top: 2.5rem;
+  .hero__stats dd {
+    font-size: 1.15rem;
+    white-space: nowrap;
   }
 
-  .home-footer-cta::before,
-  .home-footer-cta::after {
-    display: none;
-  }
-
-  .home-footer-cta .home-cta {
-    width: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-page *,
-  .home-page *::before,
-  .home-page *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  .hero__terminal {
+    right: 0;
+    width: 68%;
   }
 }

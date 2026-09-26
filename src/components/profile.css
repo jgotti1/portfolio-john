@@ -1,0 +1,79 @@
+/* About section. */
+
+.profile__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.profile__story h2 {
+  margin-top: 0.85rem;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.profile__bio {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+  color: var(--text-2);
+}
+
+.profile__lead {
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.profile__focus {
+  display: grid;
+  gap: 1rem;
+}
+
+.profile__card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.35rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color var(--transition), background-color var(--transition),
+    transform var(--transition);
+}
+
+.profile__card:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-strong);
+  transform: translateX(4px);
+}
+
+.profile__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.8rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.profile__card h3 {
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.profile__card p {
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+@media (max-width: 960px) {
+  .profile__grid {
+    grid-template-columns: 1fr;
+  }
+}

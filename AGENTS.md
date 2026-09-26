@@ -13,7 +13,8 @@ it). Do not create commits or push changes unless the user explicitly requests
 it. The site is hosted on Vercel (project `portfolio-john`, team `john-74e3`),
 connected to the GitHub repo: pushes to `main` deploy to production and serve
 `johnmargotti.com` and `margotticode.com`; other branches get preview
-deployments.
+deployments. The previous multi-page design lives on the `legacy` branch; do
+not merge it back into `main`.
 
 ## Repository map
 
@@ -22,20 +23,22 @@ deployments.
   persistent social links.
 - `src/components/` contains one component and a colocated CSS file for most
   pages or UI sections.
-- `src/components/Nav.js` derives its active state from `useLocation`. Keep its
-  links absolute and route-aware rather than restoring click-only state.
-- `src/components/Portfolio.js` renders the Portfolio introduction, the
-  animated skills constellation, a polished empty state when no projects
-  exist, and responsive project cards when data is available.
-- `src/components/Header.js` is the Home page (styles in `header.css`); it
-  includes `HeroTerminal.js` (typing-terminal card, styles in
-  `heroTerminal.css`) and the `CTA.js` buttons. `Contact.js` is the Let's Talk
-  page (styles in `contact.css`).
+- `src/components/SinglePage.js` renders the whole site as one page, in order:
+  `Header.js` (hero, `#home`), `Profile.js` (`#about`), `Portfolio.js`
+  (`#portfolio`), `Toolkit.js` (`#skills`), and `Contact.js` (`#contact`). Each
+  has a colocated lowercase CSS file (`header.css`, `profile.css`, etc.).
+- `src/components/sections.js` lists the sections (id, nav label, optional
+  route path) and the scroll helper. `SectionLink.js` is the link to use for
+  any in-page jump; it scrolls smoothly and updates the URL.
+- `src/components/Nav.js` is the fixed top bar with a phone drop-down menu;
+  `Footer.js` is the shared footer. `Reveal.js` fades content in on scroll.
+- `HeroTerminal.js` (styles in `heroTerminal.css`) is the typing terminal card
+  that floats over the hero portrait.
 - `src/components/Data/Projects.js` is the single data source for portfolio
   cards. Add or edit entries there rather than hard-coding cards in
   `Portfolio.js`.
 - `src/components/assets/Resume.pdf` is the downloadable resume and the source
-  of truth for the technical skills shown in the Portfolio constellation.
+  of truth for the skills shown in the Skills section (`Toolkit.js`).
 - `public/images/` contains images referenced by string paths such as
   `../images/john1.jpg`.
 - `public/index.html` contains the page title and document metadata.
@@ -79,125 +82,82 @@ deliberate build-tool migration.
 - Keep changes in plain JavaScript and CSS unless the user requests a broader
   migration.
 
-## Portfolio page
+## Design system
 
-- Keep the empty state: an empty `Projects` array should look intentional and
-  must not produce a blank page.
-- The hero uses a two-column layout on larger screens and stacks its copy above
-  the skills constellation at `780px` and below. Preserve that responsive
-  relationship and check the longest constellation labels for overlap before
-  adding skills.
-- The constellation's `technologyNodes` data is kept in `Portfolio.js`. It
-  cycles three groups of six resume-backed skills through six fixed visual
-  slots. Keep each group at six entries unless the SVG connections, slot
-  positions, animation timing, and responsive layout are updated together.
-- The skills constellation is decorative (`aria-hidden="true"`). Its motion
-  must honor `prefers-reduced-motion`; with motion disabled, only the first
-  skill group should remain visible so overlapping phases are not exposed.
-- When the technical-skills section of `Resume.pdf` changes, update the
-  constellation labels to match real resume content rather than adding
-  unsupported technologies.
-- Portfolio entries currently support `id`, `title`, `type`, `overview`,
-  `description`, `language`, `mobile`, `image`, `imagealt`, `weblink`, `git`,
-  and `availability`. New fields should be optional or supplied for every
-  entry. For projects with no public web link (e.g. an App Store-only app),
-  set `weblink: null` and `availability` (e.g. "On the App
-  Store"); the card then renders a non-clickable image and a solid-blue,
-  availability badge (same look as "Live project"; add an optional
-  `availabilityUrl`, e.g. the Apple App Store listing, to make it a link,
-  otherwise it is non-interactive; never guess this URL; keep the
-  text short, about 16 characters, so it fits beside "Source code") to the left
-  of "Source code". For portrait/phone screenshots that crop badly in the wide
-  image area, set `imagefit: "contain"` and `imagebg` (a matching light
-  background color, e.g. light green for Tip Calc) so the whole preview shows
-  scaled to fit.
-- `language` is displayed as comma-separated technology tags. Avoid putting
-  explanatory prose in that field. List every technology the project's card
-  provides; do not drop tags to save space (trim description copy instead).
-- "Feed the Monkey" (no longer first in `Projects.js`; RedactMe leads as the
-  featured project, and new cards go after it unless told otherwise) is the copy-length
-  template: its `overview` (one sentence) and `description` (three to four
-  sentences) roughly fill the card's `22rem` depth without leaving obvious
-  empty space above the tech tags/buttons, and without overflowing. When
-  adding or editing an entry, match that rough length — pad noticeably short
-  copy with more real detail from the project (features, tech, who it's for,
-  origin/backstory) and trim noticeably long copy — but never invent details
-  that aren't true of the project, and keep the tone professional (no filler
-  sentences just to take up space).
-- Cards use a fluid grid: 4 columns on desktop (`.portfolio-page` widened to
-  `1680px`), stepping down to 3 columns at `1440px`, 2 columns at `1150px`,
-  and 1 column at `780px` (where card height reverts to `auto`). Do not add
-  fixed card widths. Card title/overview/description font sizes and content
-  padding were intentionally trimmed to stay readable at the narrower
-  4-column width — do not bump the column count further without re-checking
-  readability and re-tuning that type scale.
-- Keep Portfolio styles scoped with `portfolio-`, `project-card`, or similarly
-  specific class names. Do not restore generic selectors such as `.card` or
-  `li` in `Portfolio.css`.
-- `.project-card` carries a glowing border (`border-color` plus a matching
-  `box-shadow`) using `--color-primary-variant`, brightening on hover. Preserve
-  this glow when touching card styles; if adjusting the palette, keep the
-  border color and glow color in sync.
-- Cards in the same row stretch to equal height, using CSS Grid's default
-  `align-items: stretch` (do not set `align-items: start`/`end` on
-  `.portfolio-grid`), `.project-card { height: 100% }`, and
-  `.project-card__content { flex: 1; min-height: 22rem }`. The `22rem` floor
-  is the original "Feed the Monkey" card's depth from when it was the only
-  card, so a lone card (or a row of similarly short cards) still renders at
-  that depth; taller content grows the whole row instead. `.project-card__actions`
-  uses `margin-top: auto` so the Live project/Source code buttons always land
-  on the same bottom edge across a row. Keep `min-height` + `flex: 1` on
-  `.project-card__content`, never a fixed `height` — `.project-card` has
-  `overflow: hidden`, so a fixed height clips any card whose content runs
-  longer than the floor and hides its buttons. Stretch-to-tallest only grows
-  shorter cards; it should never clip a taller one.
-- The Portfolio route changes the globally fixed social links into a static
-  footer through a route-presence selector. Verify that behavior if the App
-  shell or DOM order changes.
-- For Portfolio UI work, verify at least a desktop viewport near `1280x720`
-  and a narrow phone viewport near `390x844`. Check horizontal overflow, the
-  active navigation item, empty-state rendering, and browser error overlays.
+The site is a single-page redesign that keeps the original palette (indigo
+`#1f1f38`/`#2c2c6c` and sky blue `#4db5ff`). The previous multi-page design
+is preserved on the `legacy` branch.
 
-## Home and Let's Talk pages
+- Colors, fonts, spacing, and radii are tokens on `:root` in `src/index.css`
+  (`--bg`, `--surface`, `--border`, `--accent`, `--text-2`, and so on). Use
+  them instead of literal values. The legacy `--color-*` names remain only for
+  the hidden About and Services pages.
+- Fonts: Plus Jakarta Sans for text and JetBrains Mono for eyebrows, labels,
+  and the terminal.
+- Shared primitives in `index.css`: `.container`, `.page-section` (add
+  `--tinted` for the alternating band), `.section-head`, `.eyebrow`,
+  `.text-gradient`, `.btn` with `--primary`/`--secondary`/`--sm`, and `.chip`.
+- Motion (reveals, card entrance, status pulse, terminal) must stay covered by
+  the `prefers-reduced-motion` block in `index.css`.
 
-- Home layout (desktop, above 1220px): a two-column grid. The name block
-  ("Hello, I'm John Margotti") sits left above the photo; the terminal card,
-  the three focus pills, and the skills cards stack on the right, with the
-  terminal's top edge aligned to the photo's top edge. At 1220px and below it
-  becomes one column: name, photo and intro, pills, terminal, skills. Keep the
-  pills wrapping (`flex-wrap: wrap`) so they never overflow narrow columns.
-- The home column gap was widened by 20px and the column ratio nudged to
-  `1.06fr / 0.94fr` so the pills still fit on one row; re-check that if either
-  changes.
-- The photo "hand pop-out" uses two copies of `jcover.png`: the framed image
-  (clipped by the frame) and `.home-portrait__pop`, a duplicate that only
-  shows in a strip just outside the frame's right edge. Both must keep the same
-  `--pop-scale`, `transform-origin`, and object-fit so the seam is invisible.
-  The source photo is cropped at its right edge, so the hand ends in a straight
-  cut; an uncropped photo would look better.
-- The "View my work" / "Download resume" buttons and glowing rule are a
-  full-width centered row (`.home-footer-cta`) below all content, with a small
-  fixed gap above the socials footer. Do not move them into a column.
-- The About and Services tabs are hidden (see Routing); the Contact tab label
-  is "Let's Talk".
-- The home bio (three paragraphs under the photo) is written from the resume
-  but intentionally names no employers, schools, or companies; keep it generic
-  ("a major national media organization", "a full-stack developer boot camp")
-  and do not repeat the same phrase twice. It also omits contact details such
-  as address, phone, and email.
-- Let's Talk (`contact.css`): a glowing rule (`.socials::before`) separates the
-  page from the socials footer. The bottom background glow was lifted so it
-  fades before the section edge; keep it inside the section or the footer will
-  show a visible color band. The form card's background box is not extended
-  above the card, and the fields are spaced to fill it (larger row gaps and a
-  taller message box). Its copy says "I respond to every message within 24
-  hours".
-- When the page is at least a viewport tall, the socials footer sits below the
-  first screen; screenshots need a taller window or a build with that
-  minimum height removed to see it.
+## Single-page sections
+
+- Hero: headline, lede, two actions, and three stats on the left; the
+  `jcover.png` portrait on the right with the terminal card hanging off its
+  top-right corner (above the frame at `960px` and below so it never covers
+  the faces). The projects stat is `Projects.length`.
+- Hand pop-out: `.hero__frame` clips the photo, and `.hero__pop` is an
+  unclipped copy whose L-shaped `clip-path` shows only what breaks past the
+  frame (the cap above, the hand to the right). Both copies must share
+  `--pop-scale`, `transform-origin: left bottom`, and object-fit, or the seam
+  shows. The portrait (98% wide, pulled 8% left into the column gap on desktop)
+  leaves room on the right for the hand; the terminal is anchored to
+  `.hero__visual`, so resizing the portrait does not move it. The source photo is cropped at its right edge, so the hand ends in a
+  straight cut; an uncropped photo would look better.
+- About (`Profile.js`): the bio plus three focus-area cards. The bio and hero
+  lede name no employers, schools, or companies; keep them generic ("a major
+  national media organization", "a full-stack developer boot camp"), do not
+  repeat a phrase, and omit contact details. Focus-card text must stay true to
+  the bio and resume.
+- Work (`Portfolio.js`): filter buttons (All, Web apps, Games, Mobile) derived
+  from the free-text `type` field by `categoryOf` (contains "game" = game,
+  "mobile" = mobile, otherwise web; empty filters are hidden), then a 3/2/1
+  column card grid (breakpoints `1080px` and `680px`). Cards in a row stretch
+  to equal height and the action buttons sit on a shared bottom edge via
+  `margin-top: auto`; do not give cards a fixed height.
+- Keep the Work empty state: an empty `Projects` array must look intentional.
+- Portfolio entries support `id`, `title`, `type`, `overview`, `description`,
+  `language`, `mobile`, `image`, `imagealt`, `weblink`, `git`, `availability`,
+  `availabilityUrl`, `imagefit`, and `imagebg`. New fields should be optional
+  or supplied for every entry. For projects with no public web link, set
+  `weblink: null` and `availability` (e.g. "On the App Store"); add
+  `availabilityUrl` to make it a link (never guess this URL). For portrait
+  phone screenshots, set `imagefit: "contain"` and a matching light `imagebg`.
+- `language` renders as technology chips; list every technology and avoid
+  prose. RedactMe leads; new entries go after it unless told otherwise. Keep
+  `overview` to one sentence and `description` to three or four, and never
+  invent details.
+- Skills (`Toolkit.js`): four resume-backed groups. Update them when the
+  technical-skills section of `Resume.pdf` changes.
+- Let's Talk: intro, email/phone cards, and a small photo with the reply-time
+  note on the left; the form card on the right. Its copy says "I respond to
+  every message within 24 hours".
+- Verify UI work at about `1440x900`, `820x1180`, and `390x844`: horizontal
+  overflow, nav highlighting, the phone menu, and console errors. Full-page
+  headless screenshots show the fixed nav only at the top of the capture; that
+  is an artifact.
 
 ## Routing and assets
 
+- `/`, `/Portfolio`, and `/Contact` share one parent route in `App.js` that
+  renders `SinglePage`, so the page stays mounted and the path (or a hash such
+  as `/#about`) only picks which section to scroll to. `SinglePage` scrolls on
+  direct visits and Back/Forward (`POP` navigation); `SectionLink` scrolls on
+  clicks. Old `/Portfolio` and `/Contact` links keep working.
+- Nav highlighting follows the section crossing the middle of the viewport.
+  When adding a section, update `sections.js`, `SinglePage.js`, and give the
+  section an `id` plus the `page-section` class (which sets `scroll-margin-top`
+  for the fixed nav).
 - Page routes are declared in `src/App.js` and navigation destinations in
   `src/components/Nav.js`; update both when adding, removing, or renaming a
   route.
@@ -239,13 +199,12 @@ deliberate build-tool migration.
 
 ## CSS cautions
 
-CSS is global in this project. Generic selectors such as `header`, `section`,
-`li`, and `.service` can affect multiple pages, and some selectors are
-duplicated across component stylesheets. Before changing a broad selector,
-search for every use and verify all affected routes. Prefer component-scoped
-class names for new styles. The Portfolio hero deliberately overrides the
-global mobile `header` height rule; preserve that override unless the global
-rule is safely refactored.
+CSS is global in this project. The single-page sections use prefixed class
+names (`hero__`, `profile__`, `work-`, `toolkit__`, `contact__`, `site-nav`,
+`site-footer`) and avoid bare element selectors; keep it that way. The hidden
+About and Services pages still use their older stylesheets; their former
+global `section` and `li` rules are scoped to `#Services`. Those pages were not
+restyled for this design, so restyle them before unhiding either tab.
 
 ## Change discipline
 

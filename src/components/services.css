@@ -1,4 +1,4 @@
-section {
+#Services {
   margin-top: 80px;
 }
 
@@ -44,7 +44,7 @@ margin-bottom: 80px;
 .service_list {
   padding: 1.5rem;
 }
-li {
+#Services li {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.8rem;

@@ -1,7 +1,5 @@
 .home-terminal {
-  grid-area: terminal;
   align-self: start;
-  margin-bottom: -0.75rem;
   min-width: 0;
   overflow: hidden;
   background: rgba(14, 14, 42, 0.82);
