@@ -137,7 +137,7 @@
   justify-self: end;
   padding-top: 5rem;
   /* Placement nudge for the whole photo + terminal group (desktop only). */
-  top: -8px;
+  top: -18px;
   left: 15px;
 }
 
@@ -204,7 +204,7 @@
      inside the window as that margin shrinks. */
   right: -5rem;
   /* Fine placement nudge (desktop only). */
-  translate: -7px -3px;
+  translate: -47px -7px;
   z-index: 2;
   width: min(19rem, 70%);
 }
