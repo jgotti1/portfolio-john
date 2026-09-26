@@ -12,6 +12,18 @@ export const Projects = [
     description: "Sign in with Google or email, upload a PDF, and RedactMe flags sensitive details for you to review, with manual redaction too. Redactions are applied and verified before a single-use download, processed in memory with no third-party AI. Try it out.",
   },
   {
+    weblink: "https://taskmaster.margotticode.com",
+    image: "../images/new-taskmasterusa.jpg",
+    imagealt: "TaskMaster landing page with the Sign up Now button",
+    title: "TaskMaster",
+    git: "https://github.com/jgotti1/New-TaskMasterUSA",
+    mobile: "YES",
+    language: "React, React Router, styled-components, Material UI, React Bootstrap, Axios, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, SheetJS (xlsx), Railway",
+    type: "Full Stack Web App",
+    overview: "A final exam group project for the NJIT coding boot camp, built by a team of four; now maintained by me and redeployed to Railway in 2026.",
+    description: "Organizations sign up, add their team, and assign prioritized, dated tasks to individual users. Admins get a dashboard with overdue and in-progress counts and can export data to Excel, while users see only their own tasks and mark them complete. Each organization's data is isolated behind JWT authentication. Log in as the admin (demo@gmail.com) or a user (mike@gmail.com) with the password Password123!, or sign up to create your own account and organization. Try it out.",
+  },
+  {
     weblink: "https://poppy.margotticode.com",
     image: "../images/react-memory-game.jpg",
     imagealt: "Poppy's Match Game board with the New Game button, Total Tries counter, and flipped cards",
