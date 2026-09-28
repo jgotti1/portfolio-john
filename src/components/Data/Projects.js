@@ -100,6 +100,18 @@ export const Projects = [
     description: "Works out tips at a glance. Enter the bill amount, pick a tip percentage from a list of service ratings, and choose how many people are splitting it. The tip and total are shown separately, with an optional round-up and a one-tap reset for the next bill.",
   },
   {
+    weblink: "https://puppedia.margotticode.com",
+    image: "../images/pup-a-pedia.jpg",
+    imagealt: "Pup-A-Pedia landing page with the breed search bar and popular breed tags",
+    title: "Pup-A-Pedia",
+    git: "https://github.com/jgotti1/pup-a-pedia-React-Native",
+    mobile: "YES",
+    language: "React, Vite, JavaScript, CSS, React Native, Expo",
+    type: "Web App",
+    overview: "Originally built as a React Native app published on the Apple App Store, then redesigned as a responsive web version so it can be used from a link with no install.",
+    description: "Built for anyone weighing which dog breed to bring home. Search a breed API and see 14 traits scored 0 to 5 alongside height, weight and lifespan, so breeds compare like for like. A refine panel narrows results by requirements such as good with kids or low shedding, and a compare tray holds up to four breeds across separate searches, side by side, with an option to hide every row where they agree. Try it out.",
+  },
+  {
     weblink: "https://pickanumber.margotticode.com",
     image: "../images/pickanumber.jpg",
     imagealt: "Guess My Number game with the Check button and score",
