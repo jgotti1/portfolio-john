@@ -109,7 +109,7 @@ export const Projects = [
     language: "React, Vite, JavaScript, CSS, React Native, Expo",
     type: "Web App",
     overview: "Originally built as a React Native app published on the Apple App Store, then redesigned as a responsive web version so it can be used from a link with no install.",
-    description: "Built for anyone weighing which dog breed to bring home. Search a breed API and see 14 traits scored 0 to 5 alongside height, weight and lifespan, so breeds compare like for like. A refine panel narrows results by requirements such as good with kids or low shedding, and a compare tray holds up to four breeds across separate searches, side by side, with an option to hide every row where they agree. Try it out.",
+    description: "Built for anyone trying to pick the right dog breed. Look one up and see how it scores on 14 traits like energy and trainability, plus its typical height, weight, and lifespan, so breeds are easy to compare side by side. Narrow things down by what matters to you, like good with kids or low shedding, or add up to four breeds to a compare tray and see only where they actually differ. Try it out.",
   },
   {
     weblink: "https://pickanumber.margotticode.com",
