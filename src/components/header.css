@@ -224,6 +224,14 @@
   }
 }
 
+/* Landscape tablets keep the two-column hero, so lower only the portrait
+   enough to clear the terminal without shifting the copy or terminal. */
+@media (min-width: 961px) and (max-width: 1413px) {
+  .hero__portrait {
+    top: 4.25rem;
+  }
+}
+
 @media (max-width: 1333px) {
   .hero__terminal {
     right: -1.25rem;
@@ -246,7 +254,7 @@
   .hero__visual {
     justify-self: center;
     max-width: 460px;
-    padding-top: 8rem;
+    padding-top: 10rem;
     top: 0;
     left: 0;
   }

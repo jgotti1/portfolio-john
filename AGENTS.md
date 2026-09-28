@@ -104,8 +104,10 @@ is preserved on the `legacy` branch.
 
 - Hero: headline, lede, two actions, and three stats on the left; the
   `jcover.png` portrait on the right with the terminal card hanging off its
-  top-right corner (above the frame at `960px` and below so it never covers
-  the faces). The projects stat is `Projects.length`.
+  top-right corner. At landscape-tablet widths (`961px`–`1413px`), lower the
+  portrait while leaving the terminal anchored so the card clears the cap and
+  faces; at `960px` and below, reserve enough space above the portrait for the
+  terminal. The projects stat is `Projects.length`.
 - Hand pop-out: `.hero__frame` clips the photo, and `.hero__pop` is an
   unclipped copy whose L-shaped `clip-path` shows only what breaks past the
   frame (the cap above, the hand to the right). Both copies must share

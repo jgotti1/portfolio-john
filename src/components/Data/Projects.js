@@ -12,6 +12,18 @@ export const Projects = [
     description: "Sign in with Google or email, upload a PDF, and RedactMe flags sensitive details for you to review, with manual redaction too. Redactions are applied and verified before a single-use download, processed in memory with no third-party AI. Try it out.",
   },
   {
+    weblink: "https://banana-dodge.vercel.app",
+    image: "../images/banana-dodge.jpg",
+    imagealt: "Gorilla Fun game board with gorillas, flying bananas, tumbling sticks, and touch controls",
+    title: "Gorilla Fun",
+    git: "https://github.com/jgotti1/banana-dodge",
+    mobile: "YES",
+    language: "HTML5, CSS, JavaScript, Canvas 2D, WebAudio",
+    type: "JavaScript Game",
+    overview: "Frogger meets Gorilla Tag: a jungle crossing game for kids where you dodge hazards and outmaneuver gorillas.",
+    description: "Guide your brown gorilla across jungle lanes of flying bananas and tumbling sticks, dodge poop from three top-hat gorillas and a mischievous party-hat boss, and land in one of four gaps at the top. Fill all four gaps to clear the level and advance to the next. Each level gets faster. Inspired by classic Frogger and Gorilla Tag plush aesthetics, the game works on desktop, tablet, and mobile with responsive canvas sizing. Try it out.",
+  },
+  {
     weblink: "https://taskmaster.margotticode.com",
     image: "../images/taskmaster-hero.jpg",
     imagealt: "TaskMaster landing page with the Assign it. Track it. Get it done. headline",
