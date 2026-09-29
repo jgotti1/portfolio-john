@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import SinglePage from "./components/SinglePage";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
     </Router>
   );
 }
