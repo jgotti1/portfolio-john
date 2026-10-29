@@ -123,4 +123,16 @@ export const Projects = [
     overview: "An early JavaScript course assignment from 2022, built as a very early developer hungry to learn more.",
     description: "The game picks a random secret number from 1 to 20. Enter a guess and press Check to get a higher or lower hint, losing a point for each wrong guess. Guess right to win and set a high score, or press Again to start a new round. Try it out.",
   },
+  {
+    weblink: "https://speedcheck.margotticode.com",
+    image: "../images/signal-watch.jpg",
+    imagealt: "Signal Watch dashboard with test stats, live speed readout, and session history",
+    title: "Signal Watch",
+    git: "https://github.com/jgotti1/Internet_Speed_Monitor",
+    mobile: "YES",
+    language: "HTML, CSS, JavaScript, Vercel",
+    type: "Web App",
+    overview: "A lightweight, browser-based internet download speed monitor.",
+    description: "Signal Watch runs a speed check immediately when monitoring starts, repeats it on a configurable interval, and keeps session statistics until you end the test. Because it can run all day in the background, it's well suited to pinpointing random or intermittent internet issues, reporting outages and speed dips over the recorded time period rather than just a single snapshot. Each check downloads from three test sites in parallel and reports the median, flagging any site that comes in far below it. No account, database, or build step is required. Try it out.",
+  },
 ];
