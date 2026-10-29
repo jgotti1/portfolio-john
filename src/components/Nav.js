@@ -7,7 +7,7 @@ import { sectionForPath, sections } from "./sections";
 
 // The About and Services tabs from the old multi-page site stay hidden; their
 // routes in App.js still work. Links here come from sections.js.
-const linkSections = sections.filter(({ id }) => id !== "home" && id !== "contact");
+const linkSections = sections.filter(({ id }) => id !== "contact");
 
 function Nav() {
   const { pathname } = useLocation();
