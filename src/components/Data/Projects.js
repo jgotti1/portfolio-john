@@ -135,4 +135,16 @@ export const Projects = [
     overview: "A lightweight, browser-based internet download speed monitor.",
     description: "Signal Watch runs a speed check immediately when monitoring starts, repeats it on a configurable interval, and keeps session statistics until you end the test. Because it can run all day in the background, it's well suited to pinpointing random or intermittent internet issues, reporting outages and speed dips over the recorded time period rather than just a single snapshot. Each check downloads from three test sites in parallel and reports the median, flagging any site that comes in far below it. No account, database, or build step is required. Try it out.",
   },
+  {
+    weblink: "https://githubfetch.margotticode.com",
+    image: "../images/github-user-lookup.jpg",
+    imagealt: "GitHub User Lookup showing a searched account's avatar, repo count, and recent repositories",
+    title: "GitHub User Lookup",
+    git: "https://github.com/jgotti1/GitAPIFetch-React",
+    mobile: "YES",
+    language: "React, React Bootstrap, Bootstrap, GitHub REST API, JavaScript Fetch API",
+    type: "Web App",
+    overview: "Built as an instructional example for a coding bootcamp, teaching students JavaScript fetch/API fundamentals.",
+    description: "Search any GitHub username to see their avatar, public repo count, and recently updated repositories, with a link straight to their profile. Results start appearing as you type, your past searches are saved so you can revisit them in a click, and clear messages tell you when a username doesn't exist versus when GitHub itself is temporarily unreachable. A light/dark theme toggle rounds it out. Try it out.",
+  },
 ];
