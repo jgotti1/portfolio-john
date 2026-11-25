@@ -1,5 +1,17 @@
 export const Projects = [
   {
+    weblink: "https://spooltally.com",
+    image: "../images/spooltally.jpg",
+    imagealt: "SpoolTally landing page with the sign-in panel and app screenshots",
+    title: "SpoolTally",
+    git: "https://github.com/jgotti1/spooltally",
+    mobile: "YES",
+    language: "Next.js, React, TypeScript, Tailwind CSS, Firebase Authentication, Google Sign-In, Cloud Firestore, Firebase Storage, Three.js, Resend, Vercel",
+    type: "Full Stack Web App",
+    overview: "Built to run my own 3D printing side business, now growing into a product for other print shops.",
+    description: "SpoolTally started as a personal tool to track my own 3D printing side business and is now being developed into a software-as-a-service product for other 3D print shops. Log your filament rolls, build projects that pull their costs from your real inventory, get a suggested sale price for each sales channel, and keep every printer on a maintenance schedule. Sign in with Google or email, with your data stored securely in Firebase. Try it out for free, no payment is currently necessary.",
+  },
+  {
     weblink: null,
     availability: "Contact for demo",
     availabilitySection: "contact",
