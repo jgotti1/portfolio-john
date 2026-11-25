@@ -3,6 +3,7 @@ import "./Portfolio.css";
 import { BsArrowUpRight, BsCodeSlash, BsPhone } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
 import Reveal from "./Reveal";
+import SectionLink from "./SectionLink";
 import { Projects } from "./Data/Projects";
 
 // Derives a filter bucket from the free-text `type` field in Projects.js.
@@ -87,6 +88,10 @@ function ProjectCard({ project }) {
               <a className="btn btn--primary btn--sm" href={project.availabilityUrl} target="_blank" rel="noreferrer">
                 {project.availability} <BsArrowUpRight aria-hidden="true" />
               </a>
+            ) : project.availabilitySection ? (
+              <SectionLink className="btn btn--primary btn--sm" to={project.availabilitySection}>
+                {project.availability} <BsArrowUpRight aria-hidden="true" />
+              </SectionLink>
             ) : (
               <span className="btn btn--primary btn--sm work-card__availability">{project.availability}</span>
             ))

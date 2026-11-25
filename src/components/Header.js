@@ -37,6 +37,9 @@ function Header() {
             <SectionLink to="portfolio" className="btn btn--primary">
               View my work <BsArrowRight aria-hidden="true" />
             </SectionLink>
+            <SectionLink to="contact" className="btn btn--secondary">
+              Let&apos;s talk
+            </SectionLink>
           </div>
 
           <dl className="hero__stats">
