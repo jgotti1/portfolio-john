@@ -1,9 +1,8 @@
 import React from "react";
-import { BsArrowRight, BsDownload } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 import "./header.css";
 import HeroTerminal from "./HeroTerminal";
 import SectionLink from "./SectionLink";
-import Resume from "./assets/Resume.pdf";
 import { Projects } from "./Data/Projects";
 
 const stats = [
@@ -38,9 +37,6 @@ function Header() {
             <SectionLink to="portfolio" className="btn btn--primary">
               View my work <BsArrowRight aria-hidden="true" />
             </SectionLink>
-            <a href={Resume} download target="_blank" rel="noreferrer" className="btn btn--secondary">
-              <BsDownload aria-hidden="true" /> Download résumé
-            </a>
           </div>
 
           <dl className="hero__stats">
