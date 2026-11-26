@@ -191,13 +191,11 @@ is preserved on the `legacy` branch.
   browser bundle; only the public key belongs in `Contact.js`.
 - Avoid direct DOM manipulation in new React code. If the submit-button state
   is changed, prefer React state over `document.getElementById`.
-- A `contact-form` branch (already pushed) replaces EmailJS with a Vercel
-  serverless function (`api/contact.js`) that emails
-  `johnmargotti@gmail.com` through Resend and sends an ntfy phone alert. It
-  must not be merged into `main` until `RESEND_API_KEY` is set in Vercel
-  (`NTFY_TOPIC` is already set); otherwise the form would report success
-  without delivering. That branch also carries a rewritten forms section for
-  this file.
+- A prior attempt replaced EmailJS with a Vercel serverless function
+  (`api/contact.js`) that emailed `johnmargotti@gmail.com` through Resend and
+  sent an ntfy phone alert. It was never merged and its branch (plus the
+  `NTFY_TOPIC` Vercel env var it relied on) has been deleted. The form uses
+  EmailJS only; if that changes again, update this section.
 
 ## CSS cautions
 
