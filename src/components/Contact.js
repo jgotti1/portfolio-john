@@ -10,7 +10,6 @@ import {
   BsCheckCircle,
   BsEnvelope,
   BsExclamationCircle,
-  BsTelephone,
 } from "react-icons/bs";
 
 const Contact = () => {
@@ -42,7 +41,7 @@ const Contact = () => {
       console.error("EmailJS submission failed", error);
       setSubmission({
         state: "error",
-        message: "Your message could not be sent. Please email or call me directly.",
+        message: "Your message could not be sent. Please email me directly.",
       });
     }
   };
@@ -64,7 +63,7 @@ const Contact = () => {
             from you.
           </p>
 
-          <ul className="contact__methods" aria-label="Direct contact options">
+          <ul className="contact__methods contact__methods--single" aria-label="Direct contact options">
             <li>
               <a href="mailto:johnmargotti@gmail.com">
                 <span className="contact__method-icon" aria-hidden="true">
@@ -73,18 +72,6 @@ const Contact = () => {
                 <span>
                   <small>Email</small>
                   johnmargotti@gmail.com
-                </span>
-                <BsArrowUpRight className="contact__method-arrow" aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <a href="tel:+19739513866">
-                <span className="contact__method-icon" aria-hidden="true">
-                  <BsTelephone />
-                </span>
-                <span>
-                  <small>Call or text</small>
-                  973-951-3866
                 </span>
                 <BsArrowUpRight className="contact__method-arrow" aria-hidden="true" />
               </a>

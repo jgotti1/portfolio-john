@@ -41,6 +41,19 @@
     transform var(--transition);
 }
 
+/* A single remaining method gets a little more presence instead of reading
+   like a leftover row from a two-item list. */
+.contact__methods--single a {
+  padding: 1.35rem 1.5rem;
+  font-size: 1.05rem;
+}
+
+.contact__methods--single .contact__method-icon {
+  width: 3.1rem;
+  height: 3.1rem;
+  font-size: 1.3rem;
+}
+
 .contact__methods a:hover {
   border-color: var(--border-strong);
   background: var(--surface-strong);
